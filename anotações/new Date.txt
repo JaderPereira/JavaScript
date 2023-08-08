@@ -1,0 +1,19 @@
+    new Date()
+  o new Date() serve para salvar a hora atual dentro de uma variavel, por exemplo, se eu fizer um programa de relogio eu tenho que levar em cosideração a hora do 
+  usuario, pra isso eu uso o new Date() que pega a hora da maquina utilizada.
+
+  var now = new Date()                                uma variavel com o nome de "now" foi declarada com o comando "new Date()"
+  var horas = now.hours()                             a variave hora recebe "now.hours()"
+
+  o codigo quer dizer que a variavel hora vai ter o now.hours() que vai indicar a hora da maquina utilizada, isso por causa do new Date().
+  lembrando que o new Date() pode ser usado nao so com horas mas tambem para diversas coisas
+  getDay
+  getDate
+  getFullYear
+  getMilliseconds
+  getHours
+  getMinuts
+  getMonth
+  getSeconds
+  dentre outros
+  

@@ -1,0 +1,2 @@
+array(vetor ou variavel composta)
+    uma variavel composta é uma variavel que contem vários elementos, cada elemento é composto por seu valor e sua chave de identificação

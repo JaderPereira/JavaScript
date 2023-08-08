@@ -1,0 +1,2 @@
+existem 3 tipos de variaveis, var, let e const, aqui vai uma tabela sobre como elas funcionam em relação a escopo
+

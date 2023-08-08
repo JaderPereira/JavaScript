@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>meu primeiro programa...</title>
+    <style>
+        body{
+            background-color: rgb(180, 39, 39);
+            color: white;
+            font: normal 20pt arial;
+        }
+        h1 {
+            color: black;
+        }
+    </style>
+</head>
+<body>
+   <h1>titulo</h1> 
+   <p>texto</p>
+   <script>
+       var n1 = Number(window.prompt('digite um numero: '))
+       var n2 = Number(window.prompt('digite outro número: '))
+       var s = n1 + n2
+       window.alert(`A soma entre ${n1} e ${n2} é igual a ${s}`)
+
+       /*uma calculadora. isso aqui é uma calculadora q, eu fiz uma
+       calculadora usando a ferramenta variavel usada no exercicio
+       passado. eu colocando 2 vezes window.prompt simboliza 2 numeros q 
+       eu vou somar na calculadora, entao colocando duas variaveis em 2 
+       linhas de window.prompt fica a variavel n1 de numero um, e a 
+       variavel n2 de numero dois. fazendo isso eu tenho q fazer uma outra
+       variavel, essa variavel sera a variavel da soma, o resultado da soma 
+       das duas variaveis vai ser a variavel s de 'soma' entao eu terei um 
+       window.alert avisando a soma dos dois, porem no final nao ira dar a soma
+       ele so vai colocar os numeros da variavel n1 e n2 um do lado do outro, 
+       porque isso?
+       na var s (variavel soma) eu uso a linha de codigo: "var s = n1 + n2" 
+       esse simbolo de + ele na verdade nao esta fazendo a soma de dois numeros
+       ele entende que as duas variaveis sao letras e entao ele é usado como 
+       concatenação, ou seja, ele so junta as duas variaveis
+       pra concertar isso nao é nada complicado, o simbolo de + esta entendendo
+       q a variavel q eu coloquei nos dois prompt é representada como palavras
+       e nao um numero, para deixar os dois prompt como numeros basta escrever 
+       "number" e escrever o window.prompt, quando vc coloca o number antes do 
+       window.prompt ele entende q o que voce digitar vai ser um numero e 
+       o simbolo de + na var s vai entender q é a soma de numeros e entao sua 
+       calculadora vai funcionar perfeitamente. */
+   </script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+  addEventListener
+  
+ serve para detectar um evento DOM, por exemplo, voce entre dentro de um objeto com o mouse ele ja detectar e rodar a função 
+ programada. ex.: (leia o exemplo da seguinte maneira: da linha 14 ate a 16, 5 a 12 e da 18 em diante)
+
+<style>                        /* inicio do style q vai dar forma a div*/
+    div#C {                    /* a selecao da div "C" da linha 15 para ser modificada em CSS*/
+        background: blue;    /* o fundo da div "C" sera da cor azul*/
+        width: 50px;           /* a altura da div "C" sera 50 pixels*/
+        height: 50px;          /* a largura da div "C" sera de 50 pixels*/
+    }                          /*o fim das alterações na div "C"*/
+</style>                       o fim da parte de CSS (detalhe, eu so mudei a div "C"pq so tenho ela mas dentro do style eu mudo
+                               tudo que tiver na parte de CSS, é so pular uma linha abaixo dessa div ai e fazer a msm coisa com outra)
+
+<div id="C">                                        inicio de uma div criada com o id nomeado de "C"
+ isto é uma div                                     aqui sera exibido no site
+</div>                                              o fecho da div
+
+<script>                                          //inicio do script
+    var V = document.getElementById('C')         //uma variavel com a letra "v" foi criada e dentro dela temos o conteudo da div "c"
+    V.addEventListener('click', clicou)       //a variavel sera monitorada pelo "addEventListener" qnd acontecer o evento 'click' 
+    function clicou(){                         //a criação da função de click, tudo que estiver la dentro sera reproduzido apos um click
+        V.innertext = 'voce clicou na div'  //quando a div for clicada, um texto sera sobreposto nela, 'voce clicou na div'
+    }                                        //fim da função
+</script>                                   fim do script
+
+neste codigo, ira ser rodado um quadrado de 50 pixels de altura e largura com o fundo azul escrito "isto é uma div", apos ser clicado
+ele ira trocar de mensagem, "voce clicou na div", isso porque o addEventListener fez com que quando o usuario clicasse na div, a msg 
+seja trocada para "voce clicou na div", isso so com a linha de codigo usada.
+
+ V.addEventListener('click', clicou)
+
+ o "V" simboliza a variavel que eu criei uma linha acima.
+ "addEventListener" quer dizer que ele vai detectar um evento DOM, no caso é o click do mouse.
+ dentro dos parenteses temos o 'click' este click representa o evento DOM que é pra ser detectado, ou seja quando a div for clicada.
+ o "clicou" foi o nome dado para esta função, logo na linha em seguida temos a função "clicou" o nome da função é esse porque ela foi
+ nomeada dentro do addEventListener.

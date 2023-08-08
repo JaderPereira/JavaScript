@@ -1,0 +1,22 @@
+    no js temos tipos em variaveis ou codigos ou qualquer coisa.
+quando eu escrevo
+
+let idade = 15
+
+o valor da variade idade esta declarado como um numero, se eu quiser fazer alguma soma com esse numero ele iria ser tratado de forma normal.
+mas caso
+
+let nome = 'jader'
+
+o conteudo da variavel nome é uma string pois é considerado texto pelas suas aspas.
+ 
+ let comparacao = 5<3
+
+ o valor desta variavel comparacao é um valor booleano(verdadeiro ou falso), no caso o valor dentro da variavel comparacao é falso pois 5 nao é menor que 3
+
+ aqui vao os codigos para converter os tipos(tem tambem o typeof que diz o tipo):
+
+ typeof                                                         //depois do typeof tu tem que colocar a variavel em quesito
+ Number()
+ string()
+ boolean()

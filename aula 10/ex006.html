@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tkitulo malandro</title>
+    <style>
+        div#area {
+            font: normal 25pt arial;
+            background: blue;
+            width: 300px;
+            height: 200px;
+            line-height: 200px;
+            text-align: center;
+        }
+        body{
+           background: purple;
+           color: white;
+           font: normal 14pt arial; 
+        }
+    </style>
+</head>
+<body>
+    <div id="area">
+      interaja
+    </div>
+
+    <script>
+        var a = window.document.getElementById('area')
+        a.addEventListener('click', clicou)
+        a.addEventListener('mouseenter', entrou)
+        a.addEventListener('mouseout', saiu)
+
+        
+        function clicou() {  
+            a.innerText = 'clicou!'
+            a.style.background = 'green'
+        }
+        function entrou() {
+            a.innerText = 'entrou!'
+            a.style.background = 'black'
+        }
+        function saiu() {
+            a.innerText = 'saiu!'
+            a.style.background = 'blue'
+        }
+    </script>
+</body>
+</html>

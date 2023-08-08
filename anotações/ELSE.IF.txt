@@ -1,0 +1,36 @@
+else e if
+
+o if serve para criar um desvio condicional, ele so vai ser ativo se uma condição especifica acontecer. Por exemplo, se eu estou 
+dirigindo acima do limite permitido eu posso colocar um if para quando o limite for excedido a linha do codigo desparar.
+
+var velocidade = 70                                                         // a variavel velocidade foi declarada com o valor 70
+console.log('o limite de velocidade é 40km/h.')                            //um console.log para escrever qual é o limite de velocidade
+ if (velocidade > 40) {                                                   //um if para desviar uma condicional
+    console.log('você esta acima do limite de velocidade. MULTADO!')     //o resultado caso o if seja disparada
+ }else {                                                                //a abertura de um else, caso o if nao seja disparado o else vai
+    console.log('voce esta na velocidade correta.')                    //o codigo a ser desparado pelo else
+ }                                                                    //fim do else
+
+este codigo pode ser lido da seguinte maneira
+
+linha 1: a velocidade de um carro é de 70km/h
+linha 2: sera escrito "o limite de velocidade é 40km/h
+linha 3: se a velocidade do carro for maior que 40km/h que é o limite de velociade permitido
+linha 4: escreva que ele esta acima da velocidade permitida e que sera MULTADO
+linha 5: senao
+linha 6: escreva que ele esta na velocidade correta
+
+else e if é facil, voce so tem que saber o que cada comando significa para voce fazer uma leitura. outro exemplo mais amplo, desta vez a leitura do codigo sera colocada 
+na parte dos comentarios porque o codigo de cima ja explica os elementos usados
+
+var idade = 15                                             a idade de um sujeito é de 15 anos
+console.log(`voce tem ${idade} anos.`)                     escreva na tela quantos anos o sujeito tem, neste caso, o sujeito tem 15
+if (idade < 16) {                                          se a idade do sujeito for menor que 16
+    console.log('voto opicional')                          escreva na tela que o voto do sujeito é opicional
+} else                                                     senao, esquece essa condição e pula pra proxima         
+if (idade >= 18) {                                         se a idade do sujeito for maior ou igual a 18
+    console.log('voto obrigatorio.')                       escreva na tela que o voto dele é obrigatorio
+} else                                                     senao, esquece essa condição e vamo pra proxima
+if (idade >66) {                                           se a idade do sujeito for maior que 66
+    console.log('voto opicional')                          escreva na tela que o voto do sujeito é opicional.  
+}

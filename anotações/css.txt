@@ -1,0 +1,16 @@
+o css contem diversos elementos, por isso irei anotar todos que eu aprendi aqui. 
+
+     em objetos
+
+para definir a fonte                           use: font: normal 18pt arial;
+para mudar a altura de um objeto               use: height: 10px;
+para mudar a largura de um objeto              use: width: 10px;
+para mudar a altura do texto de um objeto      use: line-height: 10px; (se vc colocar a msm quantidade de pixels q a altura o texto fica no meio)
+para colocar o texto no centro                 use: text-align: center;
+para mover uma quantidade de pixels pra baixo  use: margin-top: 10px;
+
+    no site inteiro(body)
+
+para mudar a cor de fundo do site              use: background: blue; (a cor é a sua escolha, "blue" foi apenas um exemplo)
+para definir a cor das letras                  use: color: white;
+para definir a fonte                           use: font: normal 18pt arial;

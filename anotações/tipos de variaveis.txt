@@ -1,0 +1,17 @@
+existem 3 tipos de variaveis
+
+var (nome da variavel) = (valor da variavel)
+
+o var normal guarda um valor e pode ser mudado, é uma variavel simples que pode sofrer alterações
+
+
+
+const (nome da variavel constante) = (valor da variavel constante)
+
+a variavel constante ela nao muda de valor, depois que voce declara um valor a uma variavel constante ela nao vai mudar aquele valor.
+
+
+
+let (nome da variavel) = (valor da variavel)
+
+n aprendi escopo ainda, quando eu aprender comento aqui.

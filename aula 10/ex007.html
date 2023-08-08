@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jaderzao</title>
+    <style>
+        body {    
+            font: normal 18pt arial;   
+         }
+        input#pergunta{   
+             width: 110px;  
+         }
+         input#pergunta2{
+            width: 110px;
+         }
+        div#resultado{   
+             margin-top: 17px; 
+             border: 2px solid;
+             width: 300px;
+             text-align: center;
+         }
+    </style>
+</head>
+
+<body>
+    <h1> Calculadora de soma</h1>
+    <input type="text" id="pergunta">
+    <input type="text" id="pergunta2">
+    <input type="button" value="somar" onclick="somar()">
+    <div id="resultado">
+        resultado 
+    </div>
+
+    <script>
+        function somar() {
+        var res = document.getElementById('resultado')
+        var resp1 = document.getElementById('pergunta')
+        var resp2 = document.getElementById('pergunta2')
+        var n1 = Number(resp1.value)
+        var n2 = Number(resp2.value)
+        
+        var s = n1 + n2 
+        res.innerHTML = `a soma entre ${n1} e ${n2} é ${s}`
+        }
+    </script>
+</body>
+</html>

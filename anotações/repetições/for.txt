@@ -1,0 +1,20 @@
+    o codigo "for" serve para facilitar a estrutura que usamos para fazer um codigo de repetições, quando usamos o while podemos acabar consumindo linha demais no codigo
+e o for acaba facilitando isso pra gente deixando o codigo menor e mais simples de entender. exemplo:
+
+for(var j=0;j<=5;j++) {
+    console.log(j)
+}
+
+o codigo a cima é um codigo de repetição, ele vai repitir a variavel j que tem o valor zero ate ela chegar no valor 5, este codigo de cima tem o msm resultado que esse:
+
+console.log(1)
+console.log(2)
+console.log(3)
+console.log(4)
+console.log(5)
+
+obviamente o codigo de cima é mais convencional entao vamos optar por usar ele.
+
+for (inicio;teste,incremento){
+    
+}
