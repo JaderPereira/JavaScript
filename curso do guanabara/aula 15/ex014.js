@@ -6,7 +6,7 @@ console.log(`nosso vetor tem ${num.length} elementos`)
     console.log(`a posição ${p} tem o valor ${num[p]}`)
 }*/
 
-for(let pos in num){
+for(let pos in num) {
     console.log(`a posição ${pos} contem o valor ${num[pos]}`)
 }
 /*if (num.indexOf(7)==-1) {
