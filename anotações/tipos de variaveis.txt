@@ -1,17 +1,48 @@
-existem 3 tipos de variaveis
+existem 3 tipos de variaveis, o "var", "let" e o "const" cada uma tem sua funcionalidade especifica, para explicar cada uma delas preciso primeiro ensinar como funciona o escopo de variaveis dentro de um codigo de JavaScript.
 
-var (nome da variavel) = (valor da variavel)
+O escopo funciona da seguinte forma: você tem uma variavel que ela é declarada em algum lugar, esse lugar pode ser "global" ou "local", qual a diferença? Vamos supor que você está no quintal e tem uma caixa no seu quintal, a caixa vai representar um bloco, apenas abre e fecha chaves. Do outro lado teremos uma variavel já fora da caixa que pode ser observada, a diferença entre essas duas variaveis é que uma está visivel e a outra é preciso acessar a caixa para conferir seu valor, na pratica funciona assim.
 
-o var normal guarda um valor e pode ser mudado, é uma variavel simples que pode sofrer alterações
+<script>
+    let numero = 15
 
+    function soma () {
+        console.log(numero+5)
+    }
+    soma()
+</script>
 
+O que aconteceu no codigo a cima é um exemplo de variavel global, a variavel "numero" esta declarada fora de qualquer chave e pode ser usada em qualquer bloco pois está declarada global, agora um exemplo de variavel local
 
-const (nome da variavel constante) = (valor da variavel constante)
+<script>
+    {
+        let numero = 15
+    }
+    console.log(numero)
+</script>
 
-a variavel constante ela nao muda de valor, depois que voce declara um valor a uma variavel constante ela nao vai mudar aquele valor.
+Sem função sem nada, so com isso o codigo já vai dar erro, porque isso? A variavel numero está declarada em um escopo(as chaves) e ela so pode ser acessada dentro daquelas chaves porque ela tem o escopo local e so pode ser acessada naquele local. Isso me da liberdade de criar diversas variaveis em locais diferentes mas com o mesmo nome e diferentes valores. como por exemplo:
 
+<script>
+    function funcao1 () {
+        let numero = 12
+        console.log(numero)
+    }
+    function funcao2 () {
+        let numero = 112
+        console.log(numero)
+    }
+    function funcao3 () {
+        let numero = 62
+        console.log(numero)
+    }
+    function funcao4 () {
+        let numero = 1938
+        console.log(numero)
+    }
+    funcao1()
+    funcao2()
+    funcao3()
+    funcao4()
+</script>
 
-
-let (nome da variavel) = (valor da variavel)
-
-n aprendi escopo ainda, quando eu aprender comento aqui.
+Podemos ver que a variavel "numero" foi declarada varias vezes mas seu valor é mantido apenas no local, o valor armazenado na variavel "numero" da funcao1 é diferente do valor armazenado da funcao2 porque foram declarados em um escopo local e não global
