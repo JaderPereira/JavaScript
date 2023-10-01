@@ -3,11 +3,11 @@
 //Xv = -b : (2*a)
 //Yv = -delta : (4*a)
 
-let abc = [1, -4, 3]         //A, B, e C
+let abc = [-1, 2, 2]         //A, B, e C
 
 let concavidade
 
-let x = 1
+let x = 7
 
 let delta = (abc[1] * abc[1]) - 4 * (abc[0] * abc[2])
 
@@ -20,7 +20,7 @@ if (abc[0] > 0) {
 function raiz (delta) {
     let raizDelta
     
-    for(let aux = 0 ; aux < delta; aux++) {
+    for (let aux = 0 ; aux < delta; aux++) {
         if ((aux*aux) == delta) {
             raizDelta = aux
         }
@@ -48,6 +48,7 @@ function f_numero (x) {
 
 console.log("função:",f_numero(x))
 console.log(concavidade)
+console.log(delta)
 raiz(delta)
 vertice()
 console.log("Ponto C:",abc[2])
