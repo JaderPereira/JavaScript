@@ -17,7 +17,7 @@ if (abc[0] > 0) {
     concavidade = "concavidade para baixo"
 }
 
-function raiz (delta) {
+function raiz () {
     let raizDelta
     
     for (let aux = 0 ; aux < delta; aux++) {
@@ -25,7 +25,7 @@ function raiz (delta) {
             raizDelta = aux
         }
     }
-
+    raizDelta = parseInt(raizDelta)
     let x1 = (((-1) * abc[1]) + raizDelta) / (2 * abc[0])
     let x2 = (((-1) * abc[1]) - raizDelta) / (2 * abc[0])
 

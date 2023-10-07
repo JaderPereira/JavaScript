@@ -11,3 +11,9 @@ console.log(z)
 
 let aleatorio = Math.random()      //gera um numero aleatorio
 console.log(aleatorio)
+
+console.log(Math.max(1, 35, -98, 342, 9, 1))
+console.log(Math.min(1, 35, -98, 342, 9, 1))
+
+let numero1 = 9
+console.log(numero1 ** 0.5)     //raiz quadrada é feita elevando 0.5 ao numero que vai ser feita a raiz
