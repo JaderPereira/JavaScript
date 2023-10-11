@@ -6,7 +6,7 @@ let numero2 = 2.25358769754  //number
 console.log(typeof numero1)
 
 console.log(numero1.toString(2))                    //representação binária
-console.log(numero2.toFixed(3))                     //arredonda o número
+console.log(numero2.toFixed(3))                     //limite as casas decimais
 console.log(Number.isInteger(numero1))
 console.log(Number.isInteger(numero2))
 
