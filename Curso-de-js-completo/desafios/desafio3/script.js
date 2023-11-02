@@ -11,7 +11,7 @@ function meuEscopo () {
         let altura = form.querySelector('.altura')
 
         cadastro.push(pessoa = {nome: nome.value, sobrenome: sobrenome.value, peso: peso.value, altura: altura.value})
-        document.getElementById('saida').innerHTML = `nome: ${cadastro[cadastro.length-1].nome} sobrenome: ${cadastro[cadastro.length-1].sobrenome} peso: ${cadastro[cadastro.length-1].peso} altura: ${cadastro[cadastro.length-1].altura}`
+        document.getElementById('saida').innerHTML += `<p>nome: ${cadastro[cadastro.length-1].nome} sobrenome: ${cadastro[cadastro.length-1].sobrenome} peso: ${cadastro[cadastro.length-1].peso} altura: ${cadastro[cadastro.length-1].altura}</p>`
 
         console.log(cadastro)
     }
