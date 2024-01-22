@@ -9,7 +9,7 @@ console.log(z)
 z = Math.round(4.598)
 console.log(z)
 
-let aleatorio = Math.random()      //gera um numero aleatorio
+let aleatorio = Math.random()      //gera um numero aleatorio entre 1 e 0
 console.log(aleatorio)
 
 console.log(Math.max(1, 35, -98, 342, 9, 1))
