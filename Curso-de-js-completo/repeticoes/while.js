@@ -1,10 +1,12 @@
 function random(min, max) {
     const numeroAleatorio = Math.random() * (max - min) + min
-    return numeroAleatorio.toFixed()
+    return Math.floor(numeroAleatorio)
 }
-let varRandom = random(1, 40)
+const min = 1, max = 30
+let varRandom = random(min, max)
+console.log(varRandom)
 
 while (varRandom != 10) {
-    varRandom = random(1, 40)
+    varRandom = random(min, max)
     console.log(varRandom)
 }

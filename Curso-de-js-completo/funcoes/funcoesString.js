@@ -11,4 +11,4 @@ let nome = 'Jader Pereira Santos Gomes'
 
 console.log(nome.concat(' tem 16 anos'))                        //faz uma concatenação com o que estiver dentro do parenteses
 console.log(nome + ' tem 16 anos')                              //mesma coisa que o primeiro so que com o '+'
-console.log(`${nome} tem 16 anos`)                              //(maneira recomendada) ${nomeVariavel} pode ser colocado dentro de acento agudo e monstr a variavel
+console.log(`${nome} tem 16 anos`)                              //(maneira recomendada) ${nomeVariavel} pode ser colocado dentro de acento agudo e mostrar a variavel
