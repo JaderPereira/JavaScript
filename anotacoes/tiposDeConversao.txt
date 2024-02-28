@@ -16,7 +16,7 @@ o conteudo da variavel nome é uma string pois é considerado texto pelas suas a
 
  aqui vao os codigos para converter os tipos(tem tambem o typeof que diz o tipo):
 
- typeof                                                         //depois do typeof tu tem que colocar a variavel em quesito
+ typeof                                                         //depois do typeof tu tem que colocar a variavel em quesito, ex: typeof idade
  Number()
  string()
  boolean()

@@ -24,25 +24,18 @@ Sem função sem nada, so com isso o codigo já vai dar erro, porque isso? A var
 
 <script>
     function funcao1 () {
-        let numero = 12
-        console.log(numero)
+        return let numero = 12
     }
     function funcao2 () {
-        let numero = 112
-        console.log(numero)
+        return let numero = 112
     }
     function funcao3 () {
-        let numero = 62
-        console.log(numero)
+        return let numero = 62
     }
     function funcao4 () {
-        let numero = 1938
-        console.log(numero)
+        return let numero = 1938
     }
-    funcao1()
-    funcao2()
-    funcao3()
-    funcao4()
+    console.log(funcao1(), funcao2(), funcao3(), funcao4())
 </script>
 
 Podemos ver que a variavel "numero" foi declarada varias vezes mas seu valor é mantido apenas no local, o valor armazenado na variavel "numero" da funcao1 é diferente do valor armazenado da funcao2 porque foram declarados em um escopo local e não global

@@ -3,8 +3,8 @@
 
  var j = 1                                                 uma variavel com o nome j foi declarada com o valor 1
  while (j <= 5) {                                          o while foi criado, enquanto o que esta dentro de () nao for verdade, ele roda o conteudo da chaves(bloco)
-    j++                                                    a variavel j vai receber um valor de mais 1
     console.log(`a variavel j tem o valor de ${j}`)        escreva na tela: a variavel j tem o valor de (1 ate 5)
+    j++                                                    a variavel j vai receber +1 em seu valor atual
  }                                                         fecha chave, e volta pro while pra conferir se a expressao ainda esta true
 
  o while serve apenas para repetir, bem simples.
@@ -12,9 +12,13 @@
  tem o j++ que vai atribuir mais 1 no valor dele, entao ele fica com 4
  o codigo acima tem a mesma função que este, so que este é bem mais bruto.
 
- console.log(`a variavel j tem o valor de 1`)
- console.log(`a variavel j tem o valor de 2`)
- console.log(`a variavel j tem o valor de 3`)
- console.log(`a variavel j tem o valor de 4`)
- console.log(`a variavel j tem o valor de 5`)
- 
+var j = 1
+console.log(`A variável j tem o valor de {j}`)
+j++
+console.log(`A variável j tem o valor de {j}`)
+j++
+console.log(`A variável j tem o valor de {j}`)
+j++
+console.log(`A variável j tem o valor de {j}`)
+j++
+console.log(`A variável j tem o valor de {j}`)

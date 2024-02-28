@@ -1,0 +1,35 @@
+tipos de elementos DOM
+          
+    os objetos em HTML podem ser nomeados de diversas maneiras, classe, id, nome ou tag, por exemplo
+
+    <div id="div1"> 
+    isto é uma div
+    </div>
+
+    a div foi nomeada com um id, e este id tem o nome de "div1", as div's so podem ser usadas em HTML, entao existem comandos para transferir conteudo de div's do HTML para o script do site, todas as maneiras de pegar o conteudo das div's:
+
+elemento(tag)  =    document.getElementsByTagName( )   
+id             =    document.getElementsById()
+nome           =    document.getElementsByName()
+classe         =    document.getElementsByClassName()
+seletor        =    document.querySelector() ou  querySelectorAll()
+
+querySelector: seleciona de maneira mais pratica, por exemplo: eu tenho uma div com id="box", eu posso usar o querySelector para trazer essa div para o script da pagina
+    let divBox = document.querySelector('#box')
+  
+querySelectorAll: vai selecionar todos que ele encontrar que estão dentro do parenteses, assim como o querySelector normal. Exemplo, eu tenho 4 paragrafos normais e quero selecionar eles com querySelectorAll, ficaria assim:
+  let paragrafos = document.querySelectorAll('p')
+
+um exemplo:
+<body>                                               o inicio do corpo do site
+
+ <div id="idDiv">                                    a criação de uma div nomeada com o id "idDiv" 
+  isto é uma div com um id                           o conteudo da div
+ </div>                                              fim da div
+
+<script>                                             inicio do script
+  var div1 = document.getElementsByid('idDiv')       uma variavel foi declarada, esta variavel recebeu o conteudo da div "idDiv" por causa do comando getElementsById
+  document.write(div1)                               escreva na tela o conteudo da variavel div1
+</script>                                            fim do script
+
+</body>                                              fim do corpo

@@ -1,13 +1,48 @@
-const relogio = document.getElementById('relogio')
-const iniciar = document.getElementById('iniciar')
-const pausar = document.getElementById('pausar')
-const zerar = document.getElementById('zerar')
-let min  = 0
-let hora = 0
-let sec = 0
-let contando
+const relogio = document.querySelector('.relogio')
+const iniciar = document.querySelector('.iniciar')
+const pausar = document.querySelector('.pausar')
+const zerar = document.querySelector('.zerar')
+let segundos = 0
+let timer
 
+function criaHora(segundos) {
+    const data = new Date(segundos * 1000)
+    return data.toLocaleTimeString('pt-BR', {
+        hour12: false,
+        timeZone: 'UTC'
+    })
+}
+
+document.addEventListener('click', (e) => {
+    const elemento = e.target
+    if(elemento.classList.contains('zerar')) {
+        if(relogio.style.color == 'red') relogio.style.color = 'black'
+        segundos = 0
+        relogio.innerHTML = criaHora(segundos)
+        clearInterval(timer)
+    }
+    if(elemento.classList.contains('iniciar')) {
+        clearInterval(timer)
+        if(relogio.style.color == 'red') relogio.style.color = 'black'
+        iniciaTimer()
+    }
+    if(elemento.classList.contains('pausar')) {
+        relogio.style.color = 'red'
+    clearInterval(timer)
+    }
+})
+
+function iniciaTimer () {
+    clearInterval(timer)
+    timer = setInterval(() => {
+        segundos++
+        relogio.innerHTML = criaHora(segundos)
+    }, 1000)
+}
+
+/*
 iniciar.addEventListener('click',() => {
+    
     clearInterval(contando)
     if(relogio.style.color == 'red') {
         relogio.style.color = 'black'
@@ -36,7 +71,6 @@ iniciar.addEventListener('click',() => {
         } else {
             relogio.innerHTML = `0${hora}:0${min}:0${sec}`
         }
-        
     }, 1000)
 })
 
@@ -55,3 +89,4 @@ zerar.addEventListener('click',() => {
     clearInterval(contando)
     relogio.innerHTML = `0${hora}:0${min}:0${sec}`
 })
+*/
