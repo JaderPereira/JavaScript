@@ -19,10 +19,11 @@ function criaTarefa (textoInput) {
     listaTarefa.appendChild(li)
     limpaInput()
     criaBotaoApagar(li)
+    salvaTarefa()
 }
 
 function criaBotaoApagar(li) {
-    li.innerHTML += '  '
+    li.innerHTML += ' '
     const botaoApagar = document.createElement('button')
     botaoApagar.setAttribute('class', 'apagar')
     botaoApagar.innerText = 'Apagar'
@@ -47,3 +48,15 @@ addTarefa.addEventListener('click', () => {
     textoInput = tarefa.value
     criaTarefa(tarefa.value)
 })
+
+function salvaTarefa () {
+    const liTarefas = document.querySelectorAll('li')
+    const listaDeTarefas = []
+
+    for(let tarefa of liTarefas) {
+        let tarefaTexto = tarefa.innerText
+        tarefaTexto = tarefaTexto.replace('apagar', '').trim()
+        listaDeTarefas.push(tarefaTexto)
+    }
+    const tarefasJSON = JSON.stringify(listaDeTarefas)
+}
