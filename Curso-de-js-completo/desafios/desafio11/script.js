@@ -31,6 +31,7 @@ function criaBotaoApagar(li) {
 }
 
 tarefa.addEventListener('keypress', (tecla) => {
+    //keycode vai testar o número da tecla que está sendo apertada, o 13 simboliza a tecla ENTER
     if(tecla.keyCode === 13) {
         if(!tarefa.value) return
         criaTarefa(tarefa.value)
@@ -40,6 +41,7 @@ document.addEventListener('click', (e) => {
     const elemento = e.target
     if(elemento.classList.contains('apagar')) {
         elemento.parentElement.remove()
+        salvaTarefa()
     }
 })
 
@@ -55,8 +57,21 @@ function salvaTarefa () {
 
     for(let tarefa of liTarefas) {
         let tarefaTexto = tarefa.innerText
-        tarefaTexto = tarefaTexto.replace('apagar', '').trim()
+        //trim() tira os espaço desnecessários da string
+        tarefaTexto = tarefaTexto.replace('Apagar', '').trim()
         listaDeTarefas.push(tarefaTexto)
     }
     const tarefasJSON = JSON.stringify(listaDeTarefas)
+    localStorage.setItem('tarefas', tarefasJSON)
 }
+
+function adicionarTarefaSalva () {
+    let tarefa = localStorage.getItem('tarefas')
+                            //parse vai transformar um JSON para sua forma em JS, seja um array, objeto, variável e etc.
+    let listaDeTarefas = JSON.parse(tarefa)
+    console.log(listaDeTarefas)
+    for(let aux in listaDeTarefas) {
+        criaTarefa(listaDeTarefas[aux])
+    }
+}
+adicionarTarefaSalva()
