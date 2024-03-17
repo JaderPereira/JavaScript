@@ -1,4 +1,4 @@
-//Nas funções, temos um recurso chamado argumentos
+//Nas funções(menos a arrow function), temos um recurso chamado argumentos
 function faltaParametro (a, b) {
     return a + b
 }
@@ -48,8 +48,18 @@ console.log(avdObjeto({nome: 'Jader', sobrenome: 'Pereira', idade: '16'}))
 //rest operator(...)
 function conta (operador, acumulador, ...numeros) {
     for (let numero of numeros) {
-        acumulador += numero
+        if (operador === '+') {
+            acumulador += numero            
+        } else if (operador === '-') {
+            acumulador -= numero
+        } else if (operador === '*') {
+            if (acumulador == 0) acumulador++
+            acumulador *= numero
+        } else if (operador === '/') {
+            if (acumulador == 0) acumulador++
+            acumulador /= numero
+        }
     }
     console.log(acumulador)
 }
-conta('+', 0, 10, 12, 30, 15, 65)
+conta('/', 0, 10, 12, 30, 15, 65)
