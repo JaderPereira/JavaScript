@@ -1,21 +1,35 @@
 
-let colunasInput = Number(document.querySelector('#colunas'))
-let linhasInput = Number(document.querySelector('#linhas'))
-let enviar = document.querySelector('#enviar')
-let matriz = document.querySelector('#matriz')
-let leiDeFormacao = i*4 - j
-let j, i
+let linhasInput = document.querySelector('#linhas')
+let colunasInput = document.querySelector('#colunas')
+let enviar = document.querySelector('.enviar')
+let matriz = document.querySelector('.matriz')
+let i = 1, j = 1
 console.log(matriz)
 
-enviar.addEventListener('click', criaMatriz())
-function criaMatriz (colunasInput, linhasInput) {
-    for(let aux = 0; aux < linhasInput; aux++) {
+enviar.addEventListener('click', function criaMatriz() {
+    matriz.innerHTML = ''
+    j = 1
+    for(let aux = 0; aux < linhasInput.value; aux++) {
         criaLinha()
+        j++
     }
-}
+});
+
 function criaLinha () {
-    let linha = matriz.appendChild('tr')
-    for(let aux = 0; aux < colunas; aux++) {
-        let celula = linha.appendChild('td')    
+    let linha = document.createElement('tr')
+    linha.setAttribute('class', 'linha')
+    linha.innerHTML = ''
+    matriz.appendChild(linha)
+    console.log(linha)
+    i = 1
+
+    for(let aux = 0; aux < colunasInput.value; aux++) {
+        let celula = document.createElement('td')
+        linha.appendChild(celula)
+                          //muda a lei de formação aqui, no futuro ajeita o programa pra pra ele reconhecer uma lei de formação que o usuario digitar porfavor
+        celula.innerHTML = (j*2) + (i*i)
+        console.log(celula)
+        i++
     }
+    console.log(matriz)
 }
