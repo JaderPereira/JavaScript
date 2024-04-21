@@ -10,3 +10,12 @@ function chamaFalaNome () {
     falaNome()
 }
 chamaFalaNome()
+
+//Closure
+function retornaFuncao (nome) {
+    return function () {
+        return nome
+    }
+}
+const funcao1 = retornaFuncao('Jader')
+console.log(funcao1())
