@@ -1,0 +1,4 @@
+Acabei a sessão de funções avançadas, seloco aprendi muita coisa e anotei muita coisa, vou fazer um mega resumão aqui do que eu aprendi com cada função noma que eu fiz arquivo pra fazer os exemplos e tals. Vou botar uns macetes q eu descobri legal.
+
+1 - Argumentos
+    Os argumentos estão relacionados aos parâmetros da função, é um recurso que podemos usar para não ocorrer algum problema inesperado no código ou pra ele ser mais funcional mesmo.

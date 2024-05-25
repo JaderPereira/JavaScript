@@ -48,11 +48,10 @@ console.log(avdObjeto({nome: 'Jader', sobrenome: 'Pereira', idade: '16'}))
 //rest operator(...)
 function conta (operador, acumulador, ...numeros) {
     for (let numero of numeros) {
-        if (operador === '+') {
-            acumulador += numero            
-        } else if (operador === '-') {
-            acumulador -= numero
-        } else if (operador === '*') {
+        if (operador === '+') acumulador += numero            
+        else if (operador === '-') acumulador -= numero
+
+        else if (operador === '*') {
             if (acumulador == 0) acumulador++
             acumulador *= numero
         } else if (operador === '/') {
@@ -62,4 +61,4 @@ function conta (operador, acumulador, ...numeros) {
     }
     console.log(acumulador)
 }
-conta('/', 0, 10, 12, 30, 15, 65)
+conta('*', 0, 10, 12, 30, 15, 65)

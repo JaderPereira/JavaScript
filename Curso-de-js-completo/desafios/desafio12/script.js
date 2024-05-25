@@ -1,4 +1,4 @@
-//Código da calculadora feita com uma factory function.
+//Código da calculadora feita com uma factory function e uma constructor function.
 /*Súmario
     .btn = todos os botões
     .btn-eq = Botão de igual
@@ -8,6 +8,82 @@
     .display = telinha aonde aparece a conta e o resultado
 */
 
+function Calculadora () {
+    this.display = document.querySelector('.display')
+    
+    this.inicia = () => {
+        this.clicaBotao()
+        this.pressEnter()
+    }
+
+    this.clicaBotao = () => {
+        document.addEventListener('click', (e) => {
+            const alvo = e.target
+            if(alvo.classList.contains('btn-num')) {
+                this.btnParaDisplay(alvo.innerText)
+            }
+
+            if(alvo.classList.contains('btn-del')) {
+                this.apagaUm()
+            }
+
+            if(alvo.classList.contains('btn-clear')) {
+                this.displayClear()
+            }
+
+            if(alvo.classList.contains('btn-eq')) {
+                this.realizaConta()
+            }
+        })
+    }
+
+    this.realizaConta = () => {
+        let conta = this.display.value
+
+            try {
+                //a função eval vai pegar um texto e vai tentar transformar ele em JavaScript, ela é mt util mas pode ser perigosa para a segurança do código pois é possivel abrir o console no navegador e fazer perguntas pra essa função e ela pode te retornar informações que não eram pra ser destribuidas no seu código, por isso temos uma verificação de erro mais abaixo.
+                conta = eval(conta)
+
+                if(!conta) {
+                    alert('Conta inválida')
+                    return
+                }
+                this.display.value = String(conta)
+            } catch (error) {
+                alert('Conta inválida')
+                return
+            }
+    }
+
+    this.pressEnter = () => {
+        this.display.addEventListener('keypress', (e) => {
+            if(e.keyCode === 13) {
+                this.realizaConta()
+            }
+        })
+    },
+
+    this.apagaUm = () => {
+        //o slice(0, -1) vai tirar o ultimo caracter do display
+        this.display.value = this.display.value.slice(0, -1)
+    }
+
+    this.displayClear = () => {
+        this.display.value = ''
+    }
+
+    this.btnParaDisplay = (valor) => {
+        this.display.value += valor
+        this.display.focus()
+    }
+}
+
+const calculadora = new Calculadora()
+calculadora.inicia()
+
+
+
+/* Factory function:
 function criaCalculadora() {
     return {  //objeto a ser retornado
         display: document.querySelector('.display'),
@@ -86,3 +162,4 @@ function criaCalculadora() {
 
 const calculadora = criaCalculadora()
 calculadora.inicia()
+*/
