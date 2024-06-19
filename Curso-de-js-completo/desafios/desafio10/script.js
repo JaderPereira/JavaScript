@@ -15,20 +15,23 @@ function criaHora(segundos) {
 
 document.addEventListener('click', (e) => {
     const elemento = e.target
+    
     if(elemento.classList.contains('zerar')) {
         if(relogio.style.color == 'red') relogio.style.color = 'black'
         segundos = 0
         relogio.innerHTML = criaHora(segundos)
         clearInterval(timer)
     }
+
     if(elemento.classList.contains('iniciar')) {
         clearInterval(timer)
         if(relogio.style.color == 'red') relogio.style.color = 'black'
         iniciaTimer()
     }
+
     if(elemento.classList.contains('pausar')) {
         relogio.style.color = 'red'
-    clearInterval(timer)
+        clearInterval(timer)
     }
 })
 

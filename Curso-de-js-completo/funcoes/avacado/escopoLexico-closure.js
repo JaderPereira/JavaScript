@@ -2,7 +2,7 @@
 const nome = 'Jader'
 
 function falaNome () {
-    //const nome = 'Kayke'
+    const nome = 'Kayke'
     console.log(nome)
 }
 function chamaFalaNome () {

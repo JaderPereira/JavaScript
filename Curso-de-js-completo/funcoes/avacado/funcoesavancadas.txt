@@ -1,4 +1,151 @@
 Acabei a sessão de funções avançadas, seloco aprendi muita coisa e anotei muita coisa, vou fazer um mega resumão aqui do que eu aprendi com cada função noma que eu fiz arquivo pra fazer os exemplos e tals. Vou botar uns macetes q eu descobri legal.
 
-1 - Argumentos
+1 - Declarações de funções
+    Dá pra declarar funções de várias maneiras, alguma das 5 q eu aprendi:
+    1.1 - Normal
+        function funcaoNormal () {
+            console.log('sou uma função comum\n')
+        } 
+
+    1.2 - função anônima
+        A função anônima é uma função que não tem nome e pode ser atribuida a uma variável, logo a variável tem dentro dela o conteudo da função e se comporta como ela é.
+            const funcaoAnonima = function () {
+                console.log('sou uma função anônima, como pode ver não tenho nome e sou chamado pelo nome da minha variável.\n')
+            }
+
+    1.3 - Função flecha(Arrow function)
+        As arrow functions são parecidas com as funções anônimas só que mais curtas, em algumas situações voce vai ver diferenças nas arrow functions e nas funções anônimas.
+            const funcaoflecha = () => {
+                console.log('sou parecido com uma função anônima, mas ao inves da palavra \"function\" eu possuo uma flecha(=>) em seu lugar, também tenho umas alterações com o uso do \"this\".\n')
+            }
+
+    1.4 - Método
+        Métodos são MUITO utilizados em JavaScript, toda hora estamos usando métodos, um exemplo é o proprio console.log(), o 'console' é um objeto e dentro dele temos o método 'log' que é uma função, abre um código limpo ai e coloca um "console.log(console)" tu vai ver q tem vários métodos dentro do console e um deles é o log que a gente tanto usa.
+            const objeto = {
+                funcao() {
+                    console.log('sou uma função dentro de um objeto, não preciso nem usar a palavra reservada \"function\".\n')
+                }
+            }
+
+    1.5 - Funções que executam outras funções
+        Dá pra executar funções dentro de outras funções, no código abaixo temos uma função chamada executaFuncao e ela tem um parâmetro que dentro dele vai ser enviado o nome de uma função.
+            function executaFuncao (funcao) {
+            console.log('essa é uma função que pode executar outras funções, vou executar a função normal logo abaixo:')
+            funcao()
+        }
+
+2 - Argumentos
+    2.1 básico:
     Os argumentos estão relacionados aos parâmetros da função, é um recurso que podemos usar para não ocorrer algum problema inesperado no código ou pra ele ser mais funcional mesmo.
+        function faltaParametro (a, b) {
+            return a + b
+        }
+        console.log(faltaParametro(1))
+    No código a cima a gente vê que tem uma função que ta sendo chamada, mas na sua chamada ele requer 2 parâmetros e são passados apenas o valor de A e não o de B, isso quer dizer que o B fica como indefinido e o retorno da função vai dar NaN(Not a Number) porque é uma soma de 1 + undefined.
+
+    2.2 macetinhos:
+    Agora q tu ja aprendeu o conceito dos argumentos e como funciona é hora dos macetinhos. Primeiro deles é pra arrumar o código de cima, suponhando de estamos em um código enorme e temos a possibilidade de ter uma função com 2 parâmetros mas pode ter a chance de eu so enviar valor pra 1 desses parâmetros e o outro ficar sem, que nem no código a cima, para resolver isso podemos colocar um valor pré definido no parâmetro desse jeito:
+        function podeFaltarParametro (a, b = 1) {
+            return a + b
+        }
+        console.log(podeFaltarParametro(1))
+    desse jeito com o parâmetro B fica com o valor base 1 caso nenhum valor tenha sido passado a ele, se tiver um valor diferente pra ele, ele assume esse valor e joga o 1 no lixo. Aprendemos a fazer essa parada agora tem uma outra parada parecida que é com 3 parâmetros, o primeiro e o terceiro eu tenho certeza que vão receber valores mas o do meio pode não receber, pra gente fazer isso de pular um parâmetro a gente faz assim
+        function tresValoresPredefinidos (a, b = 1, c = 5) {
+            return a + b + c
+        }
+        console.log(tresValoresPredefinidos(4, undefined, 10))
+    Simples, só colocar undefined que ele pula esse parâmetro e assume o valor base(1).
+    Agora uma parada daora é que toda função que a gente cria ela vem com um vetor chamado 'arguments' e todos os parâmetros que a gente passar pra uma função vão pra lá
+        function arrayArgumentos () {
+            console.log(arguments)      //[Arguments] { '0': 10, '1': 11, '2': 12, '3': 13, '4': 14 }
+
+            for (let aux in arguments) {
+                console.log(arguments[aux])
+            }
+        }
+        arrayArgumentos(10, 11, 12, 13, 14)
+    Dá pra iterar e fazer tudo normalmente com esse vetor.
+    Uma parada diferente tambem é o rest operator(...), como o nome ja disse ele pega o resto dos parâmetros, como nesse código
+        function conta (operador, acumulador, ...numeros) {
+            for (let numero of numeros) {
+                if (operador === '+') acumulador += numero            
+                else if (operador === '-') acumulador -= numero
+
+                else if (operador === '*') {
+                    if (acumulador == 0) acumulador++
+                    acumulador *= numero
+                } else if (operador === '/') {
+                    if (acumulador == 0) acumulador++
+                    acumulador /= numero
+                }
+            }
+            console.log(acumulador)
+        }
+        conta('*', 0, 10, 12, 30, 15, 65)
+    Esse código pega um operador e faz uma conta acumulando vários valores, então ele tem q ter 3 parâmetros, um pro operador, um pro acumulador e outro pro resto dos números, se tu for ler na linha 35 ta desse jeito mesmo, o ultimo parÂmetro tá pegando todos os valores depois dos 2 na frente dele formando um array com os elementros que sobraram, que foram: [10, 12, 30, 15, 65].
+
+3 - Return
+    O retorno de uma função é extremamente importante para deixar o código limpo de redundancias, quando uma função lê um retorno, a função é encerrada alí mesmo, tudo que estiver abaixo do retorno será inútil pois o código não vai ser lido após o retorno mesmo que ele não retorne nada. Por exemplo:
+        function retorno () {
+            console.log('Esse console.log será rodado.')
+            return
+            console.log('Esse console.log não será rodado.')
+        }
+    Dá pra retornar tudo no return, desde funções até variáveis e outras paradas. Não necessáriamente uma função vai ter um unico retorno, um exemplo de um código com mais de um return:
+        function parImpar (num) {
+            if(num % 2 == 0) {
+                return 'Par'
+            } else if (num % 2 == 1) {
+                return 'ìmpar'
+            }
+        }
+
+        const num1 = parImpar(2)
+        const num2 = parImpar(7)
+        console.log(num1) //par
+        console.log(num2) //impar
+
+4 - Escopo Léxico
+    O escopo léxico de uma função define aonde variáveis e outros recursos podem ser acessados de determinados escopos, no código abaixo:
+        function externo () {
+            const varExterna = 'Variável externa, ta ligado'
+            function interno () {
+                const varInterna = 'Variável interna, ta ligado' 
+                console.log(externo) //dá pra acessar a variável externa de um escopo interno
+            }
+            console.log(interno) //do escopo externo eu não consigo acessar variáveis do escopo interno
+        }
+
+5 - Funções imediatas
+    São funções que se auto-invocam, muita das vezes quando criamos um projeto grande podemos adicionar diversas API diferentes que podem ter nomes para entrar em conflito com algumas variáveis do nosso código, enfim, uma boa prática da programação é criar um escopo específico para escrever o código, podemos fazer isso com as funções imediatas desse jeito:
+        (function (nome, idade) {
+            return console.log(nome, idade)
+        }) ('Jader', 17)
+    
+6 - Funções recursivas
+    Uma função recusiva é uma função que se auto invoca um tanto de vezes, como nesse código:
+        function recursiva (max) {
+            console.log(max)
+            if(max >= 10) return
+            max++
+            recursiva(max)
+        }
+        recursiva(0)
+
+7 - Funções fabricadoras(factory function)
+    Factory functions são um conceito muito importante das funções, sua finalidade é ter uma função que retorna um objeto para uma variável, por exemplo, eu tenho que criar o cadastro de várias pessoas diferentes, não seria uma boa prática criar cada pessoa individualmente sendo que os dados que elas vão receber são os mesmos.
+        function criaPessoa(nome, sobrenome, idade) {
+            return {
+                nome,
+                sobrenome,
+                idade
+            }
+        }
+        const pessoa1 = criaPessoa('Jader', 'Pereira', 17)
+        const pessoa2 = criaPessoa('Eva', 'Santos', 10)
+        console.log(pessoa1)
+        console.log(pessoa2)
+
+
+9 - Callback
+    funções callback são funções que são rodadas quando determinada coisa acontece, por exemplo, tu tem um código que o usuário vai enviar um dado pro servidor, no servidor esse dado vai ser analisado e processado e retornará um resultado, dependendo desse resultado, determinada função será retornada de acordo com valor retornado pelo servidor, caso contrário ela não será ativada e terá seu 'callback'.

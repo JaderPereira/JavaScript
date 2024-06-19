@@ -46,3 +46,14 @@ console.log(p1.sobrenome)
 console.log(p1.imc)
 console.log(p1.nomeCompleto)
 
+function criaPessoa(nome, sobrenome, idade) {
+    return {
+        nome,
+        sobrenome,
+        idade
+    }
+}
+const pessoa1 = criaPessoa('Jader', 'Pereira', 17)
+const pessoa2 = criaPessoa('Eva', 'Santos', 10)
+console.log(pessoa1)
+console.log(pessoa2)

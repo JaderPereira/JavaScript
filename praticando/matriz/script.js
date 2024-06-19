@@ -1,8 +1,8 @@
-
 let linhasInput = document.querySelector('#linhas')
 let colunasInput = document.querySelector('#colunas')
 let enviar = document.querySelector('.enviar')
 let matriz = document.querySelector('.matriz')
+let lei = document.querySelector('.lei')
 let i = 1, j = 1
 console.log(matriz)
 
@@ -27,7 +27,7 @@ function criaLinha () {
         let celula = document.createElement('td')
         linha.appendChild(celula)
                           //muda a lei de formação aqui, no futuro ajeita o programa pra pra ele reconhecer uma lei de formação que o usuario digitar porfavor
-        celula.innerHTML = (j*2) + (i*i)
+        celula.innerHTML = eval(lei.value)
         console.log(celula)
         i++
     }

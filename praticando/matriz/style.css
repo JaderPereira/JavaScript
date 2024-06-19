@@ -36,11 +36,13 @@ form, form > p {
     display: flex;
     flex-direction: column;
 }
-#linhas, #colunas, #lei {
+#linhas, #colunas, .lei {
     width: 180px;
     padding: 5px;
     margin: 10px 0;
 }
+
+
 
 /*  tabela  */
 td {

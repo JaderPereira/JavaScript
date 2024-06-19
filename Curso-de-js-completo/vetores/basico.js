@@ -1,5 +1,5 @@
 //introdução
-const alunos = ['luiz', 'maria', 'joao']        //lista com 3 alunos, luiz sendo o 0, maria 1 e joao o 3
+const alunos = ['luiz', 'maria', 'joao']        //lista com 3 alunos, luiz sendo o 0, maria 1 e joao o 2
 console.log(alunos)                             //exime o array inteiro
 console.log(alunos[0])                          //o indice do array começa no zero
 console.log(alunos[0], alunos[1])               //exibindo 2 itens do array
@@ -50,3 +50,8 @@ console.log(alunos[3])             //se escrevermos apenas o indice 3 ele nos re
 let funcionarios = ['jader', 'davi', 'miguel', 'paula', 'gal']      //array com 5 elementos      
 console.log(funcionarios.slice(3, 5))                               //corte do indice 0, 1 e 2, deixando apenas o indice 3 e 4(mesma coisa que as strings)
 console.log(funcionarios.slice(0, -1))                              //cortando o ultimo elemento
+
+//é possivel criar arrays usando uma constructor function
+//nesse caso a função construtora ja vem pronta do javaScript
+const nomes = new Array('Jader', 'Pereira', 'Santos')
+console.log(nomes, typeof nomes)
