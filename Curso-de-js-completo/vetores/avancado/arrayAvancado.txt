@@ -1,0 +1,55 @@
+Aprendi várias paradas sobre array, vou contar em ordem cada uma e vou explicar umas paradinhas que podem ser importante no futuro, coisa facil de esquecer, tá ligado?
+
+1 - Spread operator
+    Quando eu vi o básico de array, me mostraram que o array não se copia. Olha esse código:
+        const numeros1 = [1, 2, 3]
+        const numeros2 = numeros1
+        numeros2.pop()
+
+        console.log(numeros1) //resultado: [1, 2]
+        console.log(numeros2) //resultado: [1, 2]
+    Eu to fazendo um pop() no 'numeros2' mas as 2 variáveis do programa estão sendo afetadas, isso porque o 'numeros2' está falando que seu valor está apontando para a variável 'numeros1', ou seja, o pop() foi na variável 'numeros2' pra retirar o ultimo elemento e viu que ela na verdade estava apontando para o 'numeros1', o pop() então foi retirar o ultimo elemento do 'numeros1' já que o 'numeros2' estava apontando pra ela. Pra resolver esse problema é simples:
+        const numeros1 = [1, 2, 3]
+        const numeros2 = [...numeros1]
+        numeros2.pop()
+
+        console.log(numeros1) //resultado: [1, 2, 3]
+        console.log(numeros2) //resultado: [1, 2]
+        É assim que se usa o spread operator, ele vai expalhar o array que você quiser para que ele não esteja apontando para nenhum outro valor. Dá pra fazer isso com objeto também, só troca os colchetes por chaves.
+
+2 - Split e join
+    O split e join são 2 métodos que se completam, o split transforma uma string em um array e o join transforma um array em uma string.
+        const frutas = 'banana goiaba kiwi'
+        const frutasArray = frutas.split(' ')
+
+        console.log(frutasArray)  //resultado: [ 'banana', 'goiaba', 'kiwi' ]
+        const frutasString = frutasArray.join(' ')
+
+        console.log(frutasString)  //resultado: banana goiaba kiwi
+    O split só tem 1 parâmetro, esse parâmetro vai ser como ele vai separar cada elemento no array, no exemplo acima eu coloquei para o split separar cada elemento para cada espaço que tiver na string, o mesmo funciona pro join, ele tem 1 parâmetro que vai ser o que vai separar cada elemento do array na string.
+
+3 - Concatenação de arrays
+    Para concatenar strings sabemos que podemos utilizar o sinal '+', nos arrays funciona diferente, a gente usa um método chamado 'concat()', seus parâmetros são tudo que você quer concatenar no array em questão.
+        const numeros = [1, 2, 3]
+        const numeros2 = [4, 5, 6]
+        const numeros3 = numeros.concat(numeros2, 7, 8, 9, [10, 11, 12], 'acabou')
+
+        console.log(numeros3)  //resultado: [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 'acabou' ]
+    O concat() vai concatenar tudo que você botar no parêmetro. Bem simples.
+
+4 - Splice
+    Cara o splice vai unir 4 métodos muito importantes no tratamento de array's, são eles: pop(), push(), shift(), unshift(). Sinceramente, pode ir lá no arquivo que tá bem explicadinho tudo, n vale a pena eu escrever 2 vezes a mesma coisa, lá ta bem detalhado mesmo.
+
+5 - filter
+    O filter() é um método interessante para a gente poder filtrar arrays, ele vai ter uma função como parâmetro, essa função vai iterar sobre todos os elementos do array em questão, essa função tem parâmetros padrões, em sequenção são eles: o valor que está sendo iterado naquele momento, o indice do valor e o array completo.
+    Dentro da função ela deverá ter um retorno de verdadeiro ou falso, se for verdadeiro o valor que está sendo avaliado naquela iteração passa, se for falso ele não se mistura com os que passaram, por exemplo, eu tenho um array com vários numeros e quero filtrar aqueles que são pares.
+        const numeros = [1, 2, 3, 4, 10, 54, 6, 32, 76]
+        const numerosPares = numeros.filter((valor, indice, arrayCompleto) => {
+            console.log(valor, indice, arrayCompleto) //roda o código ai porque são muitas linhas pra escrever aqui
+            return valor % 2 == 0
+        })
+
+        console.log(numerosPares) //resultado: [ 2, 4, 10, 54, 6, 32, 76 ]
+    Esse ultimo console.log() está mostrando o array 'numerosPares' que filtrou os valores do array 'numeros' e pegou apenas os números pares, se analisarmos a função que filtrou os numeros pares vemos que ela retorna verdadeiro o falso, verdairo para um número par e falso para um impar, ou seja, quem era verdadeiro entrava no array e quem era falso não. O filter vai retornar uma array do mesmo tamanho que o original ou com menos elementos.
+
+6 - Map

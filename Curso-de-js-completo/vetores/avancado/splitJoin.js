@@ -18,3 +18,4 @@ const frutas = 'Banana, maçã, mixirica'
 const paradaLegal = frutas.split('')
 console.log(paradaLegal)
 //como dá pra ver no console.log() acima, TODA a string foi separada caracter por caracter, as vezes pode ser util.
+
