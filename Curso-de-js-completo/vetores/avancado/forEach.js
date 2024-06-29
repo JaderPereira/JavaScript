@@ -7,5 +7,5 @@ numeros.forEach((valor, indice, array) => {
     return numeros.push(2)
 })
 
-//O forEach ali em cima vai iterar sobre o array numeros 3 vezes pq ele tem 3 elementos, como no código ta falando que a cada iteração o array numeros vai receber o valor 2 o resultado do console.log() abaixo vai ser o array original numeros mais os push's que foram feitos.
+//O forEach ali em cima vai iterar sobre o array 'numeros' 3 vezes pq ele tem 3 elementos, como no código ta falando que a cada iteração o array numeros vai receber o valor 2 o resultado do console.log() abaixo vai ser o array original numeros mais os push's que foram feitos.
 console.log(numeros)    //[ 10, 43, 45, 2, 2, 2 ]

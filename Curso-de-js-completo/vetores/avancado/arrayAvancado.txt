@@ -53,3 +53,23 @@ Aprendi várias paradas sobre array, vou contar em ordem cada uma e vou explicar
     Esse ultimo console.log() está mostrando o array 'numerosPares' que filtrou os valores do array 'numeros' e pegou apenas os números pares, se analisarmos a função que filtrou os numeros pares vemos que ela retorna verdadeiro o falso, verdairo para um número par e falso para um impar, ou seja, quem era verdadeiro entrava no array e quem era falso não. O filter vai retornar uma array do mesmo tamanho que o original ou com menos elementos.
 
 6 - Map
+    O map vai mapear um array da nossa escolha, ele é um método que seu unico parâmetro é uma função, o .map vai iterar sobre o array como se fosse um for, ele vai iterando sobre cada elemento do array pra no final gerar um novo array do mesmo tamanho que o que está sendo mapeado. Essa função tem 3 parâmetros bases, são eles: o valor que está sendo iterado naquele momento, o indice do valor e o array completo.
+        const numeros = [1, 2, 3, 4, 10, 54, 6, 32, 76]
+        const dobroNumeros = numeros.map((valor, indice, arrayCompleto) => {
+            console.log(valor, indice, arrayCompleto) //roda o código ai porque são muitas linhas pra escrever aqui
+            return valor * 2
+        })
+
+        console.log(dobroNumeros) //resultado: [  2, 4, 6, 8, 20, 108, 12, 64, 152  ]
+    Cada retorno que a função fez formou esse array que foi exibido nesse console.log() aqui de cima. Compara o array 'numeros' com esse array exibido e você verá que tem o dobro de cada numero no array. O map retorna um array com o mesmo tamanho que o original.
+
+6 - reduce
+    O reduce é um método que vai reduzir o seu array, ele é parecido com o filter, mas ao inves de só diminuir o array original ele sempre vai retornar 1 unico valor do array. O reduce vai iterar sobre o array em questão como um for, seu primeiro parâmetro vai ser uma função que vai ser executada para cada valor dentro do array, seu segundo parâmetro é um acumulador. Essa função tem 4 parâmetros base, são eles: o acumulador(vai ser explicado em breve), o valor que está sendo iterado no momento, o indice do valor e o array completo. O acumulador vai funcionar como uma base para algumas operações, por exemplo, eu quero somar todos os itens do array e retornar um unico valor.
+         const numeros = [1, 2, 3, 4, 10, 54, 6, 32, 76]
+         const soma = numeros.reduce((acumulador, valor, indice, arrayCompleto) => {
+            console.log(acumulador, valor, indice, arrayCompleto)
+            return acumulador + valor
+          //Esse 0 é o acumulador, ele vai sendo somado com cada valor a cada iteração.
+         }, 0)
+
+         console.log(soma) //resultado: 188
