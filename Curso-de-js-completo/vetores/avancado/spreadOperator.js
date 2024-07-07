@@ -13,3 +13,11 @@ const colecaoNova = [...colecaoAntiga]
 colecaoNova.pop()
 console.log(colecaoAntiga, colecaoNova)
 //eu mudei os valores do array colecaoNova mas não mudei os do array colecaoAntiga, isso porque o spread operator ele cria essa cópia do array que você quer.
+
+//dá pra usar o spread operator com objetos tbm
+const pessoa1 = { nome: 'Jader', idade: 17 }
+const pessoa2 = { ...pessoa1 }
+
+pessoa2.nome = 'Miguel'
+pessoa2.idade = 16
+console.log(pessoa1, pessoa2)
