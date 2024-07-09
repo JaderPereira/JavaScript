@@ -1,0 +1,12 @@
+Anotação sobre arduinos
+
+sinais
+  digital: sinais binários, 0 ou 1, verdadeiro ou falso
+  Analogico: diversos tipos de retornos, não se limita apenas a 0 ou 1.
+
+pinMode: define o que aquele pino está fazendo, se ele está como entrada ou saida
+delay: define um intervalo de tempo em milissegundos, 1000 milisegundos = 1 segundo
+
+
+resistor
+  O resistor serve para anular ou diminuir a passagem de energia
