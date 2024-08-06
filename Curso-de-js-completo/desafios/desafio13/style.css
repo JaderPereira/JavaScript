@@ -12,9 +12,11 @@ body{
     font-family: Arial, Helvetica, sans-serif;
 }
 section {
-    width: 80%;
+    width: 100%;
+    max-width: 300px;
     background-color: aliceblue;
     border-radius: 15px;
+    margin: 0 20px;
 }
 h1{
     line-height: 55px;

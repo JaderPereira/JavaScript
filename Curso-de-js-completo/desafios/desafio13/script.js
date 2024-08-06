@@ -27,8 +27,7 @@ let cpfArray
 let resultado
 
 function enviar() {
-    cpf = document.querySelector('#cpf').value //string com ponto e traço
-    cpf = String(cpf)
+    cpf = String(document.querySelector('#cpf').value) //string com ponto e traço
     cpfLimpo = cpf.replace(/\D+/g, '') //expressão regular para deixar somente numeros
     cpfArray = Array.from(cpfLimpo)    //transforma o cpfLimpo em array
     resultado = document.querySelector('#resultado')
@@ -40,43 +39,33 @@ function enviar() {
 }
 
 function validaDoisDigitos () {
+    let cpfArrayCopia = [...cpfArray].map(Number)
+    let doisDigitosReal = [...cpfArrayCopia].splice(9, 12).join('') //pega os 2 ultimos digitos do cpf e transforma em uma string
     let doisDigitosCalculado = ''
     let sequencia = 11
-    let cpfArrayCopia = [...cpfArray]
-    let penultimoDigito = cpfArrayCopia[cpfArrayCopia.length - 2]
-    let spliceLimite = 9 //até onde o splice abaixo vai salvar o array, primeiro digito = 9, segundo digito = 10
-    let doisDigitosReal = [...cpfArrayCopia]
-    doisDigitosReal = doisDigitosReal.splice(9, 12)
-    
-    for (let aux in cpfArrayCopia) {
-        cpfArrayCopia[aux] = Number(cpfArrayCopia[aux])
-    }
     
     for(let aux = 0; aux < 2; aux++) {
         if(aux == 0) {
             cpfArrayCopia = cpfArrayCopia.splice(0, 9)//tira os 2 ultimos numeros do cpf na primeira iteração e so o ultimo na segunda
         } else {
-            penultimoDigito = Number(penultimoDigito)
-            cpfArrayCopia.push(penultimoDigito)
+            cpfArrayCopia.push(cpfArray[cpfArray.length - 2])
         }
 
-        let arrayMultiplicado = cpfArrayCopia.map((valor) => {
+        let resultado = cpfArrayCopia.map((valor) => {  //fiz um map e um reduce de uma vez só pra dar uma agiliazda
             sequencia--
             if(sequencia >= 2) return valor * sequencia 
-        })
 
-        let resultado = arrayMultiplicado.reduce((acumula, valor) => {
+        }).reduce((acumula, valor) => {
             return acumula + valor
         }, 0)
+
         resultado = (11 - (resultado % 11))
-        if(resultado >= 10) resultado = 0
+        if(resultado >= 10) resultado = 0   //se o digito for maior que 10, no cpf é considerado como 0
 
         sequencia = 12
-        spliceLimite = 10
-        console.log(resultado)
         doisDigitosCalculado += resultado
     }
-    doisDigitosReal = doisDigitosReal.join('')
+
     return String(doisDigitosCalculado) == String(doisDigitosReal)? 'CPF válido':'CPF inválido'    
 }
 

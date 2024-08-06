@@ -9,6 +9,7 @@
 */
 
 function Calculadora () {
+    this.apaga
     this.display = document.querySelector('.display')
     
     this.inicia = () => {
@@ -19,7 +20,12 @@ function Calculadora () {
     this.clicaBotao = () => {
         document.addEventListener('click', (e) => {
             const alvo = e.target
+
             if(alvo.classList.contains('btn-num')) {
+                if(this.apaga == true) {
+                    this.display.value = ''
+                    this.apaga = false
+                }
                 this.btnParaDisplay(alvo.innerText)
             }
 
@@ -40,19 +46,21 @@ function Calculadora () {
     this.realizaConta = () => {
         let conta = this.display.value
 
-            try {
-                //a função eval vai pegar um texto e vai tentar transformar ele em JavaScript, ela é mt util mas pode ser perigosa para a segurança do código pois é possivel abrir o console no navegador e fazer perguntas pra essa função e ela pode te retornar informações que não eram pra ser destribuidas no seu código, por isso temos uma verificação de erro mais abaixo.
-                conta = eval(conta)
+        try {
+            //a função eval vai pegar um texto e vai tentar transformar ele em JavaScript, ela é mt util mas pode ser perigosa para a segurança do código pois é possivel abrir o console no navegador e fazer perguntas pra essa função e ela pode te retornar informações que não eram pra ser destribuidas no seu código, por isso temos uma verificação de erro mais abaixo.
+            conta = eval(conta)
 
-                if(!conta) {
-                    alert('Conta inválida')
-                    return
-                }
-                this.display.value = String(conta)
-            } catch (error) {
+            if(!conta) {
                 alert('Conta inválida')
                 return
             }
+            this.display.value = String(conta)
+        } catch (error) {
+            alert('Conta inválida')
+            return
+        }
+
+        this.apaga = true
     }
 
     this.pressEnter = () => {

@@ -33,3 +33,21 @@ console.log(nome)
 console.log(idade)
 console.log(comIds)
 console.log(pessoas)
+
+//Tratando tipos primitvos em array
+//Dá pra trocar os tipos primitivos do array, o array aqui embaixo tem todos os seus elementos como string, pra transformar todos eles em numero não podemos fazer Number(array), para fazer essa transformação podemos utilizar o map
+
+let array = ['0', '1', '2', '3', '4', '5']
+console.log(array)
+
+array = array.map(Number)  //transforma todos os elementos do array em numeros
+console.log(array)
+
+array = array.map(String)  //transforma todos os elementos do array em Strings
+console.log(array)
+
+array = array.map(Number)
+array = array.map(Boolean)  //vai transformar todos os numeros em verdadeiro ou falso, 0 = false   1 ou maior = true
+console.log(array)
+
+//quando mapeamos o array para trocar seus elementos por valores booleanos temos um empasse, o que é verdadeiro ou falso? Simples, como dito acima, 0 será sempre falso e todo numero maior que 0 vai ser verdadeiro. Quando o assunto é string toda string que conter algum valor vai ser verdadeiro, só será falso se ela for uma string vazia sem espaço ('').
