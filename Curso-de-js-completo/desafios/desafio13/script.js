@@ -32,81 +32,100 @@ function enviar() {
     cpfArray = Array.from(cpfLimpo)    //transforma o cpfLimpo em array
     resultado = document.querySelector('#resultado')
     
-    resultado.innerText = validaDoisDigitos()
+    if(cpfLimpo === '') {
+        
+    } else if(cpfLimpo.length !== 11){
+        resultado.innerText = 'Tamanho incorreto'
+    } else if(sequencia()) {
+        resultado.innerText = 'CPF inválido'
+    } else {
+        resultado.innerText = validaDoisDigitos()
+    }
     
-    //resultado.innerText += ValidaPrimeiroDigito()
-    //resultado.innerText += ValidaSegundoDigito()
+
+    //constructor function que foi criada no exercicio de validar cpf, essa função foi construida porque posteriormente deve ter um exercicio que utiliza uma constructor function, então vou deixar ela salva aqui, é a mesma coisa que a função de baixo só que traduzida pra uma constructor function.
+    function ValidaCPF() {
+        Object.defineProperty(this, 'cpfLimpo', {
+            enumerable: true,
+            get: function () {
+                return cpfLimpo
+            }
+        })
+    }
+
+    ValidaCPF.prototype.sequencia = function () {
+        //Essa função vai servir para quem sequencias não sejam feitas, por exemplo: se calcularmo o cpf 111.111.111-11 vai dizer que ele existe, porem esse cpf não é possivel, então devemos fazer essa checagem para que não acorra esse problema.  
+        const sequencia = this.cpfLimpo[0].repeat(this.cpfLimpo.length)
+        return sequencia === this.cpfLimpo
+    }
+
+    ValidaCPF.prototype.valida = function () {
+        if(this.cpfLimpo === '') return false
+        if(this.cpfLimpo.length !== 11) return false
+        if(this.sequencia()) return false
+
+
+        let cpfArrayCopia = [...cpfArray].map(Number)
+        let doisDigitosReal = [...cpfArrayCopia].splice(9, 12).join('') //pega os 2 ultimos digitos do cpf e transforma em uma string
+        let doisDigitosCalculado = ''
+        
+        for(let aux = 0; aux < 2; aux++) {
+            aux == 0? cpfArrayCopia = cpfArrayCopia.splice(0, 9) : cpfArrayCopia.push(Number(cpfArray[cpfArray.length - 2]))
+            let sequencia = cpfArrayCopia.length + 2
+
+            let resultado = cpfArrayCopia.reduce((acumula, valor) => {
+                sequencia--
+                return acumula + (valor * sequencia )
+            }, 0)
+
+            resultado = (11 - (resultado % 11))
+            if(resultado >= 10) resultado = 0   //se o digito for maior que 10, no cpf é considerado como 0
+
+            doisDigitosCalculado += resultado
+        }
+        return String(doisDigitosCalculado) == String(doisDigitosReal)? 'CPF válido':'CPF inválido'
+    }
+
+    const cpf1 = new ValidaCPF()
+    console.log(cpf1.sequencia())
+    console.log(cpf1.valida())
 }
 
+
+
+//
+//
+//Separação do código da constructor function e do código da função normal pro HTML
+//
+//
+
+
+function sequencia () {
+    const sequencia = cpfLimpo[0].repeat(cpfLimpo.length)
+    return sequencia === cpfLimpo
+}
+
+
+
+//Essa função aqui foi feita para um site normal em html com JavaScript, diferente da constuctor function acima que não tem interação com a pagina e so com o console
 function validaDoisDigitos () {
     let cpfArrayCopia = [...cpfArray].map(Number)
     let doisDigitosReal = [...cpfArrayCopia].splice(9, 12).join('') //pega os 2 ultimos digitos do cpf e transforma em uma string
     let doisDigitosCalculado = ''
-    let sequencia = 11
     
     for(let aux = 0; aux < 2; aux++) {
-        if(aux == 0) {
-            cpfArrayCopia = cpfArrayCopia.splice(0, 9)//tira os 2 ultimos numeros do cpf na primeira iteração e so o ultimo na segunda
-        } else {
-            cpfArrayCopia.push(cpfArray[cpfArray.length - 2])
-        }
+        aux == 0? cpfArrayCopia = cpfArrayCopia.splice(0, 9) : cpfArrayCopia.push(Number(cpfArray[cpfArray.length - 2]))
+        let sequencia = cpfArrayCopia.length + 2
 
-        let resultado = cpfArrayCopia.map((valor) => {  //fiz um map e um reduce de uma vez só pra dar uma agiliazda
+        let resultado = cpfArrayCopia.reduce((acumula, valor) => {
             sequencia--
-            if(sequencia >= 2) return valor * sequencia 
-
-        }).reduce((acumula, valor) => {
-            return acumula + valor
+            return acumula + (valor * sequencia )
         }, 0)
 
         resultado = (11 - (resultado % 11))
         if(resultado >= 10) resultado = 0   //se o digito for maior que 10, no cpf é considerado como 0
 
-        sequencia = 12
         doisDigitosCalculado += resultado
     }
-
     return String(doisDigitosCalculado) == String(doisDigitosReal)? 'CPF válido':'CPF inválido'    
 }
-
-
-/*
-function ValidaPrimeiroDigito () {
-    let sequencia = 11
-    let cpfArrayCopia = cpfArray
-    for (let aux in cpfArrayCopia) {
-        cpfArrayCopia[aux] = Number(cpfArrayCopia[aux])
-    }
-    cpfArrayCopia = cpfArrayCopia.splice(0, 9)//tira os 2 ultimos numeros do cpf
-
-    let arrayMultiplicado = cpfArrayCopia.map((valor) => {
-        sequencia--
-        if(sequencia >= 2) return valor * sequencia 
-    })
-
-    let somaMultiplicado = arrayMultiplicado.reduce((acumula, valor) => {
-        return acumula + valor
-    }, 0)
-
-    console.log(somaMultiplicado)
-    return (11 - (somaMultiplicado % 11)) >= 10? 0:(11 - (somaMultiplicado % 11))
-}
-
-function ValidaSegundoDigito() {
-    let sequencia = 12
-    let cpfArrayCopia = cpfArray
-    for (let aux in cpfArrayCopia) {
-        cpfArrayCopia[aux] = Number(cpfArrayCopia[aux])
-    }
-    cpfArrayCopia = cpfArrayCopia.splice(0, 10)//tira os 2 ultimos numeros do cpf
-
-    let arrayMultiplicado = cpfArrayCopia.map((valor) => {
-        sequencia--
-        if(sequencia >= 2) return valor * sequencia 
-    })
-    let somaMultiplicado = arrayMultiplicado.reduce((acumula, valor) => {
-        return acumula + valor
-    }, 0)
-
-    return (11 - (somaMultiplicado % 11)) >= 10? 0:(11 - (somaMultiplicado % 11))
-} */
