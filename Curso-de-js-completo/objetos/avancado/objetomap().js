@@ -1,13 +1,12 @@
+//n to entendeo como funciona essa parada não, procura melhor direito ai
 const pessoas = [
     { id: 1, nome: 'Jader'},
     { id: 2, nome: 'Asaf'},
     { id: 3, nome: 'Paula'}
 ]
 
-const novasPessoas = {}
+const novasPessoas = new Map()
 
-for(const pessoa of pessoas) {
-    const id =  pessoa
-    novasPessoas[id] = { ...pessoas }
-}
+
+
 console.log(novasPessoas)
