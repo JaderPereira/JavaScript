@@ -9,37 +9,39 @@
 <body>
     <section>
         <h1 id="texto">Formulário</h1>
-        <form action="">
-            <p>
-                <label for="nome">Nome:</label>
-                <input type="text" name="" class="input" id="nome">
+        <form action="" method="post" id="formulario">
+            <p class="campo">
+                <label for="nome">Nome</label>
+                <input type="text" name="" class="input nome">
+            </p>
+            <p class="campo">
+                <label for="sobrenome">Sobrenome</label>
+                <input type="text" name="" class="input sobrenome">
+            </p>
+            <p class="campo">
+                <label for="cpf">CPF</label>
+                <input type="text" name="" class="input cpf">
+            </p>
+            <p class="campo">
+                <label for="usuario">Usuário</label>
+                <input type="text" name="" class="input usuario">
+            </p>
+            <p class="campo">
+                <label for="senha">senha</label>
+                <input type="password" name="" class="input senha">
+            </p>
+            <p class="campo">
+                <label for="confereSenha">Repetir senha</label>
+                <input type="password" name="" class="input confereSenha">
             </p>
             <p>
-                <label for="sobrenome">Sobrenome:</label>
-                <input type="text" name="" class="input" id="sobrenome">
-            </p>
-            <p>
-                <label for="cpf">CPF:</label>
-                <input type="text" name="" class="input" id="cpf">
-            </p>
-            <p>
-                <label for="usuario">Usuário:</label>
-                <input type="text" name="" class="input" id="usuario">
-            </p>
-            <p>
-                <label for="senha">senha:</label>
-                <input type="text" name="" class="input" id="senha">
-            </p>
-            <p>
-                <label for="confereSenha">Repetir senha:</label>
-                <input type="text" name="" class="input" id="confereSenha">
-            </p>
-            <p>
-                <input type="button" id="botao" value="Enviar" onclick="enviar()">
+                <input type="submit" id="botao" value="Enviar">
             </p>
         </form>
         <p id="resultado"></p>
     </section>
-    <script src="script.js"></script>
+
+    <script src="validaCpf.js"></script>
+    <script src="script2.js"></script>
 </body>
 </html>

@@ -4,6 +4,9 @@ let inputCpf
 let inputUsuario 
 let inputSenha 
 let inputConfereSenha
+let campos = document.querySelectorAll('.campo')
+
+
 
 function enviar () {
     inputNome         = document.querySelector('#nome').value
@@ -23,54 +26,50 @@ function enviar () {
 
 class Usuario {
     constructor (nome, sobrenome, cpf, usuario, senha) {
-        Object.defineProperty(this, 'nome',      {  enumerable: true, configurable: true, writable: true, value: nome  })
+        Object.defineProperty(this, 'nome',      {  enumerable: true, configurable: true, writable: true, value: nome       })
         Object.defineProperty(this, 'sobrenome', {  enumerable: true, configurable: true, writable: true, value: sobrenome  })
-        Object.defineProperty(this, 'cpf',       {  enumerable: true, configurable: true, writable: true, value: cpf  })
-        Object.defineProperty(this, 'usuario',   {  enumerable: true, configurable: true, writable: true, value: usuario  })
-        Object.defineProperty(this, 'senha',     {  enumerable: true, configurable: true, writable: true, value: senha  })
+        Object.defineProperty(this, 'cpf',       {  enumerable: true, configurable: true, writable: true, value: cpf        })
+        Object.defineProperty(this, 'usuario',   {  enumerable: true, configurable: true, writable: true, value: usuario    })
+        Object.defineProperty(this, 'senha',     {  enumerable: true, configurable: true, writable: true, value: senha      })
     }
 
     checaTudo() {
         let erros = ''
-        if(this.checaNomeESobrenome() === true && this.checaCPF() === true && this.checaSenha() === true) {
+        this.checaCPF()
+        this.checaSenha()
+        this.checaSobrenome()
+        this.checaUsuario()
+        if(this.checaNome() === true && this.checaCPF() === true && this.checaSenha() === true && this.checaSobrenome() === true && this.checaUsuario() === true) {
             return 'Cadastro concluido'
         } else {
-            erros += this.checaNomeESobrenome() !== true? this.checaNomeESobrenome():''
-            erros += this.checaCPF() !== true? this.checaCPF():''
-            erros += this.checaSenha() !== true? this.checaSenha():''
+            
             console.log(this.exibeUsuario())
             return erros
         }
 
     }
-
-    checaNomeESobrenome() {
-        if(this.nome === '' || this.sobrenome === '' || this.usuario === '') {
+    
+    checaNome() {
+        if(this.nome === '') {
             this.nome = ''
-            this.usuario = ''
-            this.sobrenome = ''
-            return 'O campo nome e/ou sobrenome não estão preenchidos corretamente. \n'
-        } else {
-            this.usuario = inputUsuario
-            this.nome = inputNome
-            this.sobrenome = inputSobrenome
-            return true
+            let errosTipo = document.createElement('p')
+            errosTipo.textContent = 'O campo nome não está preenchido corretamente. \n'
+            campos[0].appendChild(errosTipo)
+            return false
         }
+        this.nome = inputNome
+        return true
     }
-
-    checaSenha() {
-        if(this.senha !== '' && (this.senha.length >= 8 && this.senha.length <= 16)) {
-            if(this.senha !== inputConfereSenha) {
-                this.senha = ''
-                return 'As senhas não se correspondem. \n'
-            } else {
-                this.senha = inputSenha
-                return true
-            }
-        } else{
-            this.senha = ''
-            return 'O campo Senha deve ter pelo menos 8 caracteres e menos que 17. \n'
+    checaSobrenome() {
+        if(this.sobrenome === '') {
+            this.sobrenome = ''
+            let errosTipo = document.createElement('p')
+            errosTipo.textContent = 'O campo sobrenome não está preenchido corretamente. \n'
+            campos[1].appendChild(errosTipo)
+            return false
         }
+        this.sobrenome = inputSobrenome
+        return true
     }
 
     sequenciaCPF() {
@@ -84,19 +83,31 @@ class Usuario {
 
         if(this.cpf === '') {
             this.cpf = ''
-            return 'O campo CPF está vazio \n'
+            let errosTipo = document.createElement('p')
+            errosTipo.textContent = 'O campo CPF está vazio \n'
+            campos[2].appendChild(errosTipo)
+            return false
         }
         if(this.cpfLimpo === '') {
             this.cpf = ''
-            return 'O CPF deve conter apenas números. \n'
+            let errosTipo = document.createElement('p')
+            errosTipo.textContent = 'O CPF deve conter apenas números. \n'
+            campos[2].appendChild(errosTipo)
+            return false
         }
         if(this.cpfLimpo.length !== 11) { 
             this.cpf = ''
-            return 'O CPF não tem 11 números \n'
+            let errosTipo = document.createElement('p')
+            errosTipo.textContent = 'O CPF não tem 11 números \n'
+            campos[2].appendChild(errosTipo)
+            return false
         }
         if(this.sequenciaCPF()) { 
             this.cpf = ''
-            return 'CPF inválido \n'
+            let errosTipo = document.createElement('p')
+            errosTipo.textContent = 'CPF inválido \n'
+            campos[2].appendChild(errosTipo)
+            return false
         }
         this.cpfArray = Array.from(this.cpfLimpo)
         let cpfArrayCopia = [...this.cpfArray].map(Number)
@@ -122,9 +133,45 @@ class Usuario {
             return true
         } else {
             this.cpf = ''
-            return 'CPF inválido. \n'
+            let errosTipo = document.createElement('p')
+            errosTipo.textContent = 'O campo CPF está vazio \n'
+            campos[2].appendChild(errosTipo)
+            return false
         }
     }
+
+    checaUsuario() {
+        if(this.usuario === '') {
+            this.usuario = ''
+            let errosTipo = document.createElement('p')
+            errosTipo.textContent = 'O campo usuário não está preenchido corretamente. \n'
+            campos[3].appendChild(errosTipo)
+            return false
+        } else {
+            this.usuario = inputUsuario
+            return true
+        }
+    }
+
+    checaSenha() {
+        if(this.senha !== '' && (this.senha.length >= 8 && this.senha.length <= 16)) {
+            if(this.senha !== inputConfereSenha) {
+                this.senha = ''
+                let errosTipo = document.createElement('p')
+                errosTipo.textContent = 'As senhas não se correspondem. \n'
+                campos[4].appendChild(errosTipo)
+                return 
+            }
+            this.senha = inputSenha
+            return true
+        }
+        this.senha = ''
+        let errosTipo = document.createElement('p')
+        errosTipo.textContent = 'O campo Senha deve ter pelo menos 8 caracteres e menos que 17. \n'
+        campos[4].appendChild(errosTipo)
+        return false
+    }
+
 
 
     exibeUsuario () {
