@@ -55,3 +55,7 @@ console.log(funcionarios.slice(0, -1))                              //cortando o
 //nesse caso a função construtora ja vem pronta do javaScript
 const nomes = new Array('Jader', 'Pereira', 'Santos')
 console.log(nomes, typeof nomes)
+
+//dá pra fazer uma ordem crescente com os valores tbm
+const array = [1, 6, 3, 8, 5]
+console.log(array.sort())
