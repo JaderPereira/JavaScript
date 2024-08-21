@@ -28,25 +28,56 @@ function calcula() {
             let linhas = {
                 linha1: [ordem.camadaK[0]],                                                         // 1s2
                 linha2: [ordem.camadaL[0]],                                                         // 2s2
-                linha3: [ordem.camadaL[1], ordem.camadaM[0]],                                       // 2p6, 3s2
-                linha4: [ordem.camadaM[1], ordem.camadaN[0]],                                       // 3p6, 4s2
+                linha3: [ordem.camadaL[1], ordem.camadaM[0]],                                       // 2p6,  3s2
+                linha4: [ordem.camadaM[1], ordem.camadaN[0]],                                       // 3p6,  4s2
                 linha5: [ordem.camadaM[2], ordem.camadaN[1], ordem.camadaO[0]],                     // 3d10, 4p6, 5s2
                 linha6: [ordem.camadaN[2], ordem.camadaO[1], ordem.camadaP[0]],                     // 4d10, 5p6, 6s2
                 linha7: [ordem.camadaN[3], ordem.camadaO[2], ordem.camadaP[1], ordem.camadaQ[0]],   // 4f14, 5d10, 6p6, 7s2
                 linha8: [ordem.camadaO[3], ordem.camadaP[2], ordem.camadaQ[1]],                     // 5f14, 6d10, 7p6
             }
+
             
+            
+            for(let aux = 0; aux < 14; aux++) {
+                if(this.eletrons <= 0) break
+                if(this.eletrons >= linhas.linha2[aux]) {
+                    this.eletrons -= linhas.linha2[aux]
+                    estadoAtual = 'Camada: K, subnivel de diferenciação: 1s2'
+                } else {
+                    for(let aux = 0; aux < linhas.linha2[0]; aux++) {
+                        if(this.eletrons == 0) break
+                        this.eletrons -= 1
+                        estadoAtual = `Camada: K, subnivel: 1s${aux + 1}`
+                    }
+                }
+            }
+            
+            for(let aux = 0; aux < 14; aux++) {
+                if(this.eletrons <= 0) break
+                if(this.eletrons >= linhas.linha1[aux]) {
+                    this.eletrons -= linhas.linha1[aux]
+                    
+                    estadoAtual = 'Camada: L, subnivel de diferenciação: 2s2'
+                } else {
+                    for(let aux = 0; aux < linhas.linha1[0]; aux++) {
+                        if(this.eletrons == 0) break
+                        this.eletrons -= 1
+                        estadoAtual = `Camada: K, subnivel: 2s${aux + 1}`
+                    }
+                }
+            }
+
             for(let aux = 0; aux < 14; aux++) {
                 if(this.eletrons <= 0) break
                 console.log(this.eletrons)
                 if(this.eletrons >= linhas.linha1[aux]) {
                     this.eletrons -= linhas.linha1[aux]
-                    estadoAtual = 'Camada: K, subnivel de diferenciação: 1s2'
+                    estadoAtual = 'Camada: L, subnivel de diferenciação: 2s2'
                 } else {
                     for(let aux = 0; aux < linhas.linha1[0]; aux++) {
                         if(this.eletrons == 0) break
                         this.eletrons -= 1
-                        estadoAtual = `Camada: K, subnivel: 1s${aux + 1}`
+                        estadoAtual = `Camada: K, subnivel: 2s${aux + 1}`
                     }
                 }
             }
