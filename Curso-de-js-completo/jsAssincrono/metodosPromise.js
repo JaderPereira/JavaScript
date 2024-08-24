@@ -24,7 +24,7 @@ function funcaoPromise (msg, time) {
 
 
 //Promise.all
-//O promise.all() vai resolver todas as promises que foram passadas no parâmetro com um then, no exemplo abaixo temos um vetor e 3 desses valores são chamadas de uma função promise, para ser melhor performático podemos usar o promise.all para resolver o problema desses 3 valores já que tem o mesmo objetivos(só adicionarem o valor do primeiro parâmetro ao inves dessa função mas poderia ser uma parada super complexa). Claro, caso você tenha resoluções diferentes pra diferentes valores que jogar na sua promise, crie seus 'then' de maneira funcional.
+//O promise.all() vai resolver todas as promises que foram passadas no parâmetro com um then, caso alguma não passar, ele rejeita todas, no exemplo abaixo temos um vetor e 3 desses valores são chamadas de uma função promise, para ser melhor performático podemos usar o promise.all para resolver o problema desses 3 valores já que tem o mesmo objetivos(só adicionarem o valor do primeiro parâmetro ao inves dessa função mas poderia ser uma parada super complexa). Claro, caso você tenha resoluções diferentes pra diferentes valores que jogar na sua promise, crie seus 'then' de maneira funcional.
 const promise = [
     'Primeiro valor',
     funcaoPromise('promise 1', 3000),
@@ -59,6 +59,38 @@ Promise.race(race)
         console.log(valor)
     })
 
+
+
 //Promise.resolve
+//Promise.resolve vai resolver a promessa logo de cara, digamos que temos uma página que baixa algumas coisas em cache pra deixar ela mais otimizada, então eu crio uma função para checar se o cache da pagina está baixado para que ele rodado imediatamente
+
+function checaPagina() {
+    const emCache = true   //digamos que seja true, mas caso fosse um exercicio real essa hipotese teria q ter toda um remeleixom pra saber se o cache ta baixado
+
+    if(emCache) {
+        return Promise.resolve('Pagina em cache')
+    } else {    //so vai rodar esse else se a variável 'emChache' for false, testa ai
+        return funcaoPromise('Pagina baixada', aleatorio(1, 5))
+    }
+}
+
+checaPagina()
+    .then(resultado => console.log(resultado))
+    .catch(erro => console.log(erro))
 
 //Promise.reject
+//Promise.reject faz a mesma coisa que o Promise.resolve só que ao inves de resolver ele vai rejeitar, Digamos que essa mesma função de checar página tem que cair em um erro caso o cache da página esteje baixado:
+
+function checaPagina2() {
+    const emCache = true   //digamos que seja true, mas caso fosse um exercicio real essa hipotese teria q ter toda um remeleixom pra saber se o cache ta baixado
+
+    if(emCache) {
+        return Promise.reject('Pagina em cache')
+    } else {    //so vai rodar esse else se a variável 'emChache' for false, testa ai
+        return funcaoPromise('Pagina baixada', aleatorio(1, 5))
+    }
+}
+
+checaPagina2()
+    .then(resultado => console.log(resultado))
+    .catch(erro => console.log('ERRO', erro))
