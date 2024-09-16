@@ -45,3 +45,12 @@ function carregaResultado(response) {
     const resultado = document.querySelector('.resultado')
     resultado.innerHTML = response
 }
+
+
+fetch('pagina.html')
+    .then(resposta => {
+        if(resposta.status !== 200) throw new Error('erro nosso')
+        return resposta.text()
+    })
+    .then(html => console.log(html))
+    .catch(e => console.log(e))
