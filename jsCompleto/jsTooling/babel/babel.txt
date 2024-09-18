@@ -1,0 +1,22 @@
+Nessa aula aprendi sobre babel, babel é um site que transforma seu código JavaScript em uma versão compativel para todos os navegadores, exemplo: algumas versões do intertnet explorer não suporta a programação orientada a objetos, isso faz com que usuários que utilizam navegadores mais antigos não possam acessar meu site, para isso você joga seu código no babel e ele reformula seu código para que ele seja executavel em navegadores mais antigos, para deixarmos isso de forma mais automatica temos que executar uma série de comandos no terminal
+
+passo 1 - abrir o terminal
+    Para abrir o terminal clique em "View"(o botão fica no canto superior esquerdo do aplicativo) e depois em "terminal"
+
+passo 2 - baixando package.json
+    Agora a gente vai baixar um arquivo pelo terminal, dentro dele digite "     npm init -y     " com isso você baixa um arquivo com nome de "package.json", esse arquivo vai ser quem vai gerenciar os pacotes do navegadores
+
+Passo 3 - baixando o babel
+    Para baixar o babel abra o terminal novamente e digite a seguinte linha "       npm install --save-dev @babel/cli @babel/preset-env @babel/core     " depois vai começar a baixar o babel e vai aparecer uma pasta chamada "node_modules" e um arquivo chamado "package-lock.json"
+    Versão do babel 
+        se tu abrir o arquivo "package.json" tu vai ver uma propriedade com o nome de "devdependences" e dentro dessa propriedade temos outro objeto com 3 propriedades, "@babel/cli", "@babel/core" e "@babel/preset-env" que seus valores são suas versões, caso você queira usar uma versão especifica basta digitar a linha que instala o babel e e colocar um arroba e a versão que você quer depois da parada do babel q tu quer, ex:     " npm install --save-dev @babel/cli@7.6.4  babel/preset-env @babel/core     " eu to especificando a versão do babel/cli para que ele seja a versão 7.6.4 e isso funciona para qualquer um dos 3
+
+Passo 4 - usando o babel
+    Agora que baixamos tudo, vamos utilizar o babel de verdade! Para isso tenha seu arquivo .js em mãos em que você vai fazer essa adaptação com o babel, no terminal você vai digitar a seguinte linha "       npx babel main.js -o bundle.js --presets=@babel/env     " isso vai criar um arquivo chamado bundle.js que vai fazer a conversão do seu script para que ele seja executavel em diversos navegadores antigos. Quando colocamos nosso script atrelado ao index, ao inves de colocar nosso script mais moderno, colocamos esse bundle.js porque ele funciona para navegadores mais modernos e mais robustos.
+
+passo 4 - maneira automatica
+    Toda vez que fizermos alterações no nosso script mais moderno temos que executar a linha no terminal do passo acima, para mandarmos o babel atualizar o bundle automaticamente quando mudamos nosso script mais moderno fazemos da seguinte maneira, abra o arquivo "package.json" e dentro da propriede "scripts" coloque uma nova propriedade com o nome de "babel"(nome da sua escolha), dentro dele colocamos a seguinte linha: "      babel ./main.js -o ./bundle.js --presets=@babel/env -w       "
+    Após fazer isso, dentro do terminal digite "     npm run babel      " nesse caso é babel porque ali vai a priopriedade que colocamo a linha que acabamos de falar, após digitar isso o babel vai ficar assistindo cada modificação que fazemos no nosso script principal e vai fazer as alterações no bundle.js. para parar é so apertar "  ctrl + c   "
+
+Noticia ruim(ou boa)
+    Não é tão comum utilizar o babel assim, é mais utilizado o webpeck que veremos a seguir mas é importante tu saber como as coisas funcionam porque elas são interligadas.
