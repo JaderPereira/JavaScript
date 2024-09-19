@@ -1,0 +1,1 @@
+Aula sobre webpack, o webpack é msm coisa que o babel só que melhor, a gente vai usar essa parada daqui pra frente, o que vai rolar, a gente vai copiar essa pasta e vai utilizar do jeito q tá aqui com essas configurações, o porem é que aqui ta sem a pasta node_modules, então baixa o node_modules pra poder funcionar direitinho
