@@ -18,5 +18,16 @@ passo 4 - maneira automatica
     Toda vez que fizermos alterações no nosso script mais moderno temos que executar a linha no terminal do passo acima, para mandarmos o babel atualizar o bundle automaticamente quando mudamos nosso script mais moderno fazemos da seguinte maneira, abra o arquivo "package.json" e dentro da propriede "scripts" coloque uma nova propriedade com o nome de "babel"(nome da sua escolha), dentro dele colocamos a seguinte linha: "      babel ./main.js -o ./bundle.js --presets=@babel/env -w       "
     Após fazer isso, dentro do terminal digite "     npm run babel      " nesse caso é babel porque ali vai a priopriedade que colocamo a linha que acabamos de falar, após digitar isso o babel vai ficar assistindo cada modificação que fazemos no nosso script principal e vai fazer as alterações no bundle.js. para parar é so apertar "  ctrl + c   "
 
+
+
+comandos
+    Baixando o package.json -                                    npm init -y 
+    Baixando a versão mais recente do babel -                    npm install --save-dev @babel/cli @babel/preset-env @babel/core
+    Craindo/atualizando o arquivo bundle -                       npx babel main.js -o bundle.js --presets=@babel/env
+    Atualização automatica do arquivo bundle -                   babel ./main.js -o ./bundle.js --presets=@babel/env -w
+    Interromper o terminal -                                     crtl(tecla) + c(tecla)
+
+
+
 Noticia ruim(ou boa)
     Não é tão comum utilizar o babel assim, é mais utilizado o webpeck que veremos a seguir mas é importante tu saber como as coisas funcionam porque elas são interligadas.
