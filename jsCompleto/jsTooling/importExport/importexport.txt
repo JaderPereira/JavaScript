@@ -1,0 +1,40 @@
+Quando estamos codando em um arquivo.js, temos um mundinho ali dentro que arquivos externos não podem acessar nenhuma variável, objeto, função ou qualquer outra coisa do tipo, para fazermos isso temos o import e export, como os nomes dizem, um importa e outro exporta. Vamos com calma, tenha os arquivos "modulo1.js" e o "index.js" abertos. Imagine que temos variáveis dentro do modulo1.js e quero que alguma ou todas as variáveis possam ser utilizadas no index.js, ao final do script colocamos a seguinte linha:
+    export { variavel1, variavel2, variavel3, funcao1 }
+
+Nessa linha eu exportei 3 variáveis e 1 função, mas eu apenas falei que elas seriam exportadas, não disse para onde elas vão, para isso eu vou no index.js, arquivo onde eu quero essas variáveis e coloco:
+    import { variavel1, variavel2, variavel3, funcao1 }
+
+Com isso eu tenho as variáveis do modulo1.js. Agora imagina que dentro do meu script do index.js eu tenho varias variáveis e acabo que eu tenho que criar uma variável que tem o mesmo nome da variável que eu trouçe do arquivo modulo1.js, para isso a gente pode mudar o nome da variável importada para ela não conflitar com outras variáveis. Para fazer isso temos 2 jeitos, pelo import e pelo export, primeiro pelo import, quando a gente vai falar pro programa "olha eu vou trazer umas variáveis de outro programa, beleza?" a gente coloca aquela linha do import para colocar as variáveis em questão, para trocar o nome delas colocamos a palavra "as" e o outro nome da variavel em seguida. exemplo dentro do index.js:
+    import { variavel1 as modulo1_variavel1, variavel2 as modulo1_variavel2, variavel3 as modulo1_variavel3, funcao1 as modulo1_funcao1 }
+
+É só colocar o nome da variável, "as" e o novo nome da variável. Agora pra fazer isso no arquivo em que as variáveis vão sair é simples. dentro do arquivo modulo1.js:
+    export { variavel1 as modulo1_variavel1, variavel2 as modulo1_variavel2, variavel3 as modulo1_variavel3, funcao1 as modulo1_funcao1 }
+
+Mesma fita, tranquilão. Agora uma parada q dá pra fazer tambem é na mesma linha que você declarou sua variável você consegue exportar ela. Exemplo no arquivo modulo1.js:
+    export const nome = 'Jader'
+    export class Pessoa {
+        constructor(nome, sobrenome) {
+            this.nome = nome,
+            this.sobrenome = sobrenome
+        }
+    }
+
+Simples assim. Deu pra entender o que o import e o export faz, mas tu deve ter notado que quando temos muitas variáveis, funções e etc pode acabar sendo muito trabalhoso para importar tudo, para isso podemos criar um objeto onde conterá tudo q foi exportado, para isso fazemos da seguinte forma no arquivo index.js:
+    import * as meuModulo from './modulo1'
+
+Assim você cria um objeto com tudo que foi exportado, abre o index.html dessa pasta e abre o console que vai mostar como fica o objeto, com essa parada a gente consegue fazer coisas mais poderosas, n precisamos mais nos preocupar com nomes de variáveis que podem conflitar entre arquivos. Agora tem uma parada legal chamada default, quando estamos exportando varias paradas podemos falar que temos 1 variável, objeto, vetor ou qualquer coisa como padrão(default), para isso colocamos a palavrinha 'default' apos a palavra 'export', o default a gente so pode ter 1 por arquivo mesmo. fica assim no arquivo modulo1:
+    export default class Pessoa {
+        constructor(nome, sobrenome) {
+            this.nome = nome,
+            this.sobrenome = sobrenome
+        }
+    }
+
+Beleza, agora no arquivo index.js a gente vai importar isso, como ele é nossa exportação padrão eu posso simplismente fazer desse jeito:
+    import exportDefault from './modulo1'
+
+Isso vaif fazer com que a exportação default do arquivo 'modulo1' seja traga para este script com o nome de exportDefault. Pra gente falar que uma exportação é default quando fazemos isso em uma linha no final do script é assim(no arquivo modulo1.js):
+    export { nome as default, sobrenome as sobrenome2, soma }
+    
+Nesse caso eu to falando que a exportação nome é a default. Dá pra importar o default e outras exportações tambem, no arquivo index.js:
+    import exportDefault, { nome, sobrenome, soma } from './modulo1.js'
