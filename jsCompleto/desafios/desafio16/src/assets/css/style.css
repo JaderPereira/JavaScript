@@ -1,0 +1,57 @@
+@charset "UTF-8";
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    background-color: rgb(72, 107, 138);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 97vh;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+section {
+    width: 80%;
+    background-color: aliceblue;
+    border-radius: 15px;
+}
+h1{
+    line-height: 55px;
+    font-size: 2em;
+    margin: 20px;
+}
+h2 {
+    font-size: 1.5em;
+    margin: 20px;
+}
+p {
+    margin: 20px 10px;
+}
+.relogio {
+    font-size: 3em;
+}
+input {
+    margin: 5px;
+    padding: 5px;
+}
+input[type="button"] {
+    padding: 15px;
+    font-size: 1.4em;
+    width: 150px;
+    background-color:  rgb(72, 107, 138);
+    border: none;
+    font-weight: bold;
+    color: white;
+}
+.campo {
+    margin: 10px 0px 0 20px;
+}
+
+.resultado {
+    margin: 20px;
+    font-size: 1.8em;
+    font-weight: bold;
+    color: rgb(72, 107, 138);
+    letter-spacing: 2px;
+}
