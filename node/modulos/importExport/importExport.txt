@@ -1,0 +1,39 @@
+Nessa aula aprendi a exportar e importar modulos de um arquivo para o outro, similar ao export e import como ja vi mas tem umas paradinhas diferentes. Para exportamos modulos de um arquivo temos 4 jeitos, imagine a seguinte situação, eu tenho 2 variáveis, 1 função e 1 classe para exportar. Desse jeito
+    const nome = 'Jader'
+    const sobrenome = Pereira
+    const falaNome = () => nome + ' ' + sobrenome
+
+    class Pessoa {
+        constructor(nome) {
+            this.nome = nome
+        }
+    }
+
+Para exportar do primeiro jeito a gente faz assim:
+    module.exports.nome = nome
+
+O objeto module ja existe no JS por padrão(da um console.log pra tu ver como ele é) e a gente tem uma propriedade chamada exports que, em outro arquivo, podemos importas essas exportações, ent a gente pode fazer isso pra cada módulo, tem um jeito parecido tbm q é assim:
+    exports.nome = nome
+
+O JS ja entende que esse exports é do module e n é necessário referenciar ele toda hora, seguindo essa mesma lógica a gente pode usar a palavra this dentro do escopo inicial do nosso arquivo que ele age como se a gente tivesse falando 'module.exports'.
+    this.falaNome = falaNome
+
+Agora digamos q eu queira exportar uma porrada de modulo, pra isso da pra exportar tudo de maneira mais rapida e prática.
+    module.exports = {
+        nome, sobrenome, falaNome, Pessoa
+    }
+
+
+
+
+
+Agora que vimos tudo de exportão, vamos ver a importação. Para importarmos um modulo a gente importa pelo arquivo, se tu ver aonde esse arquivo txt tá tu consegue ver que tem mais 2 arquivos, um chamado mod1.js e outro app.js, eu estou exportando um modulo do mod1.js para o app.js, os exemplos acima aconteceram no mod1.js e os que vão vir a seguir no app.js. Para importarmos um modulo inteiro fazemos assim:
+    const mod1  = require('./mod1')     //caminho do arquivo em que o modulo será exportando
+
+Agora quando vamos chamar por exemplo a função 'falaNome' a gente fala 'mod1.falaNome()', para deixar isso mais acessivel podemos criar uma variável que contem essa função:
+    const falaNome = mod1.falaNome
+
+Agora fica mais facil de chamar a função falaNome, caso a gente so queira determinados modulos podemos importar eles com o conceito de 'destructing':
+    const { nome, sobrenome, Pessoa } = require('./mod1')
+
+ali eu to importando tudo do modulo menos a função falaNome, pra chamar essas variáveis nem precisa colocar mod1.nome, é so chamar ela mesmo(ex: console.log(nome))
