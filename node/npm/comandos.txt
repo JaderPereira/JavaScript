@@ -1,0 +1,41 @@
+To aprendendo a usar o node package menager(NPM) e vou anotar uns comandos daoras, antes de começar com a instalação de uns pacotes vou ensinar como que cria o arquivo package.json que a gente precisa para o nosso projeto, vamos lá, no terminal você digita: 
+    npm init -y
+
+Lendo isso com calma o npm significa o node package manager, init é o arquivo package.json que ele vai criar e o -y fala pro terminal configurar o package.json sozinho, se a gente tirar esse '-y' a gente vai configurar varias paradas no package.json, é melhor deixar o terminal criar sozinho ali e fica mec.
+
+quando vamos instalar algum pacote como webpack, express ou uma biblioteca a gente vai no terminal e digita:
+    npm install <nome do pacote>
+
+Quando instalamos algum pacote, ele vai para o package.json como "dependences", la tem um objeto que mostra todas os pacotes instalados com suas versões. Uma parada daora é que a versão do seu pacote provavelmente vai vir com acento circunflexo que indica que quando novas versões desse pacote sairem, o pacote automaticamente será atualizado. Caso queira aquela versão do pacote fixa, abra o terminal e digite:
+    npm install <nome do pacote> -E
+
+Mesma coisa de instalar o pacote só que o -E vai fazer com que o acento circunflexo suma e que a versão fique estática.
+
+Esses pacotes são salvos como dependencias no nosso arquivo package.json, nele temos dois tipos de dependencias, as devDependencies que são dependencias dev e as dependecies normais, para trocarmos nossos pacotes de devDependencies pra dependecies ou visse-versa podemos fazer assim:
+    npm install <nome do pacote> --save-dev             //salva nas devDependencies
+    npm install <nome do pacote> --save-prod            //salva nas dependecies
+
+Agora como podemos mudar as versões dos pacotes? para fazer isso a gente coloca um arroba dps do nome do pacote e sua versão, ex:
+    npm install <nome do pacote>@2.1.0
+
+Agora você tem a versão 2.1.0 do seu pacote, lembrando q ele vai vir com o acento circunflexo por padrão. Agora a gente vai aprender sobre as versões dos pacotes, quando voce instala um pacote é comum ver 3 numeros separados por ponto(ex: express 2.4.6), esses numeros indicam a versão do pacote, agora vamos destrinchar eles:
+    patch: O ultimo numero da versão significa algumas pequenas correções de bugs, nada muito grande ou médio.
+    minor: O numero do meio significa algum recurso novo do seu pacote que não vá ser alguma correção de bug pequena ou alguma mudança grande no seu pacote.
+    major: O primeiro numero signfica a versão maior do projeto, quando fazemos grandes atualizações que podem deixar versões anteriores incompativeis, ex: se eu to na minha versão major 4 e atualizo ela pra 5, as versões anteriores não vao ter compatbilidade com recursos da 5.
+
+Tem uma parada daora tbm que a gente pode buscar a versão minor e patch mais recente de uma major, exemplo: eu quero que meu pacote express esteja na sua versão major 2 e quero que o minor e o patch sejam os ultimos que lançaram para a versão major 2, para isso a gente coloca assim:
+    npm install <nome do pacote>@2.x
+
+Esse '.x' vai instar a ultima versão minor e patch do major 2. Agora pra desinstalar um pacote fazemos assim:
+    npm uninstall <nome do pacote>
+
+Agora vou mostrar como mostrar nossas dependencias no terminal, no proprio digite:
+    npm ls
+
+Isso mostra todas as dependencias que você tem, pode acontecer de ter ficado um texto gigante porque alguns pacotes podem ser bem extensos, como o próprio webpack, para mudar isso a gente usa o depth que vai nos ditar a profundidade que vai ser mostrada, se eu quero que me mostre apenas o primeiro nivel das dependencias e não suas trezentas pastas internas eu coloco que o depth é igual a 0. ex:
+    npm ls --depth=0
+
+E para ver um nivel afrente: --depth=1 e por ai vai. Agora vamos ver como descobrimos se temos algum pacote nosso desatualizado, para isso digitamos no terminal:
+    npm outdated
+
+Vai criar uma tabela com seus pacotes e outros 3 titulos, o primeiro é o current que mostra a versão atual que seu pacote está, a segunda é o wanted que vai falar dizer de acordo se tiver o acento circunflexo no seu pacote, se tiver ele mostra pra qual versão o pacote vai caso você dê update, e a terceira é a versão mais recente que aquele pacote apresenta
