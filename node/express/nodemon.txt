@@ -1,0 +1,8 @@
+O nodemon é um pacote que a gente usa para rodar nosso servidor e sempre que fziermos alguma atualização ele atualizar automaticamente, primeiro a gente baixa ele, no terminal digite:
+    npm install nodemon --save-dev
+
+O nodemon é uma devdeppendencie por isso esse '--save-dev' para deixar as coisas organizadas, a gente so precisa dele na minha maquina e não é necessário para a execução do projeto, diferente do express. 
+Agora que baixamos vamos rodar, quando você baixa o nodemon ele cria um comando pra você dentro de "scripts" no seu package.json, ele vai vir assim:
+    "start": "node server.js"
+
+A gente só tem que mudar uma paradinha, ao inves de "node server.js" a gente coloca "nodemon server.js" e é so isso, a gente n precisa colocar "npm run" nem coisa do tipo porque o "start" é um comando que o npm entende que é pra ser executado algo. Para parar é só usar o comando CRTL + C

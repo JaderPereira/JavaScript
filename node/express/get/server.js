@@ -9,7 +9,7 @@ app.post('/', (request, response) => {
 app.get('/', (requisicao, resposta) => {    
     resposta.send(`
         <form action="/" method="POST">
-            nome: <input type="text" name="nome">
+            nome do cliente: <input type="text" name="nome">
             <button>enviar</button>
         </form> 
     `)
