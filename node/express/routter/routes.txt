@@ -1,0 +1,52 @@
+AVISO - eu tirei a pasta node_modules mas se quiser executar esse script so baixar ai no terminal, digita " npm install " q ja baixa.
+
+
+Aula de hoje foi sobre routes e controllers, como a gente viu como fazer get e post pra raiz do nosso site, pra contato e outras paradas acabou que pode ter ficado uma duvida de como deve ser uma aplicação complexa com diversas paginas, o que pode ser um tanto mal organizado se colocado em 1 só arquivo para tudo que a aplicação tiver, pra isso a gente usa routes e controllers.
+
+routes
+    Routes é um parada no expresse que a gente usa para deixar nosso aplicativo mais limpo e suave, imagina que eu tenho um site com pagina principal, perfil, contato, sobre e produtos, é muita coisa pra deixar apenas no server js contando que alguns caminhos vão ter gets e posts, para simplificar isso a gente cria um arquivo chamado routes.js que vai servir como um guia pro nosso servidor executar nossas funções.
+
+controllers
+    Como o nome ja diz, são controladores que teremos para nosso servidor executar tudo certinho e organizado pra gente saber se organizar pela nossa aplicação, se tu ver aqui a gente tem uma pasta chamada controllers que tem alguns arquivos .js, o homeController.js e o contatoController.js que dentro dele temos os gets, e posts que precisamos, da até pra associar que isso é a mesma coisa que a gente faz com os modulos, a gente geralmente tem um arquiv.js que invoca outros arquivos.js que tem funcionalidades diferentes, mas poderiam estar em um mesmo, só estão separados por questões de organização
+
+Juntando os controllers com o route
+    Primeira coisa que a gente ja faz no nosso arquivo route.js é chamar o express e criar uma variável que vai cuidar das rotas.
+        const express = require('express')   //pegando o express q eu baixei
+        const route = express.Router()       //vai dizer qual rota deve ser seguida
+
+    Agora a gente tem que ir la na nossa pasta controllers, la a gente tem diversos arquivos com get, post, essa papaguaiada toda que ta tudo sendo exportado pra gente pegar eles no nosso routes, vou fazer um exemplo bem simples de um controller para a pagina inicial:
+        module.exports.paginaInicial = (req, res) => {
+            res.send('Isso aqui vai ser usado para fazer um get da pagina inicial')
+        } 
+
+        module.exports.postPaginaInicial = (req, res) => {
+            res.send('Isso aqui vai ser usado para fazer um post da pagina inicial')
+        } 
+
+    Agora que exportamos funções do nosso arquivo homeController.js a gente vai importar elas no nosso route.js.
+        const express = require('express')   //pegando o express q eu baixei
+        const route = express.Router()       //vai dizer qual rota deve ser seguida
+        const homeController = require('./controllers/homeController')
+
+        route.get('/', homeController.paginaInicial)
+        route.post('/', homeController.postPaginaInicial)
+
+        module.exports = route
+
+    O que a gente fez agora foi importar o homeController e fazer um get e um post que era o que tinha la no arquivo, depois  exportou o route que contem todas as rotas para tratar cada parada, agora a gente tem que enviar isso para o server.js que vai ser o cabeça para executar tudo. Primeiro a gente importa o route e depois usa ele. Dentro do server.js:
+        const express = require('express')   //pegando o express q eu baixei
+        const app = express()                //variavel q vai portar o express
+        const routes = require('./routes')
+
+        app.use(express.urlencoded({ extended: true }))
+        app.use(routes)
+
+        app.listen(3000, () => {
+            console.log('acessar: http://localhost:3000')
+            console.log('Servidor executando na porta 3000')
+        })
+
+    Agora a gente tem nosso server.js limpinho e o route.js funcionando namoral.
+
+
+
