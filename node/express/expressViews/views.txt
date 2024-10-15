@@ -1,0 +1,22 @@
+AVISO = se tu quiser rodar essa aula, primeiro baixa o ejs e junto dele vai ser baixado o node modules que dps tu desinstala pra n pesar mt, só ir no terminal e digitar
+    npm i ejs
+
+Ai ele vai instalar o ejs e o node modules, pronto so tu inciar o servidor com npm start aproveitar essa aula.
+
+
+
+Hoje foi dia de aprender sobre views, um recurso que a gente usa em servidores, pra isso ja deixa o arquivo server.js aberto e companha comigo, nas primeiras linhas de código a gente ve que está sendo configurado para o express 2 paradinhas:
+    app.set('views', path.resolve(__dirname, 'src', 'views'))
+    app.set('view engine', 'ejs')
+
+A primeira linha fala pro servidor qual diretorio(pasta) devemos utilizar para acessarmos nossos arquivos que serão renderizados, já a segunda linha configura a engine que o view vai usar, nesse caso a gente ta usando ejs mas tem varias outras, so pesquisar por view engines que tu acha.
+Beleza mas o que são esses views e o ejs, o ejs funciona como um html mais poderoso onde você pode integrar algum js dentro dele, fazer um 'if', um 'for' ou coisa do tipo. A gente cria arquivos ejs para suprir essas necessidades, mais pra frente vai ser mostrado isso, o importante dessa aula é o view, se tu abrir o homeController tu vai ver que antes tava sendo renderizado um pequeno formulário na nossa pagina inicial, agora está sendo renderizado um arquivo ejs que ta dentro da pasta views, como a gente fez aquelas 2 linhas de configuração do view o nosso servidor ja sabe que tem que ir la na pasta views e procurar um index.ejs, basicamente é assim que funciona, mais pra frente a gente se aprofunda mais, pode ter uma porrada de duvida mas elas vão ser sanadas.
+
+
+app.set('views', path.resolve(__dirname, 'src', 'views'))
+    parametro 1 = qual configuração vai ser setada, nesse caso é aonde que ta o views
+    parametro 2 = rota pra pasta views.
+
+app.set('view engine', 'ejs')
+    parametro 1 = configuração que vai ser setada, nesse caso é a engine que o view vai usar
+    parametro 2 = qual engine vai ser usada pelo view, nesse caso é o ejs.
