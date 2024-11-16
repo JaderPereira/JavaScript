@@ -1,0 +1,1 @@
+Nessa pasta aqui eu botei meu conhecimento da aula de como integrar o webpack com o express, ja tá tudo configurado ai tranquilinho tlgd, se precisar é só copiar e colar.
