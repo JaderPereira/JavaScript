@@ -1,0 +1,9 @@
+aulinha de middleware
+definição: são funções que a gente consegue usar o 'req', 'res' e o 'next', um exemplo disso é quando fazemos:
+    app.get('/', (req, res) => {
+        res.send('linguiça')
+    })
+
+Isso dai é um middleware, tu deve ter visto sem o next mas eu ja explico o uso dele, em um resumo porco isso é um middleware, mas nessa pasta eu fiz alguns exemplos de bons usos do middleware como, por exemplo, no arquivo server.js que tem um app.use(globalMiddleware) e essa variável busca um export de um arquivo que é justamente uma função que usa o req, res, next e toda vez que algum get ou post é feito esse middleware é ativado, ele fica no meio do caminho, ele sempre solta uma mensagem referente ao resultado do formulário do arquivo index.ejs que é a raiz do site, testa ai.
+
+fiz tbm um exemplo la no routes, o get pra raiz do site não é so o controler, eu fiz um beforeMiddleware q vem antes do controller e um aftermiddle que vem depois do controller, é basicamente uma corrente, quando você abre a raiz do site ela abre o beforemiddleware primeiro e roda o que tiver la dentro, depois ela vai pro controller e depois pro after middleware, a parada é que tem que ter um next() no final de todo middleware que for prosseguir, ou seja, no beforeMiddleware e no controller da raiz do site, no after n precisa pq ele é o ultimo. Para colocar esse next é mt simples, só coloca o next como um parametro depois do req, res e usa ele como uma função, da uma olhada la no arquivo geralMiddleware que tem o before e ou aftermiddleware la (o next so tem no before middleware). 
