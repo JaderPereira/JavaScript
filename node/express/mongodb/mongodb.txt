@@ -1,0 +1,16 @@
+Aprendendo a usar uma base de dados com mongo db
+Primeiro eu criei um cluster (?) la no site atlas que ta relacionado com o mongodb, é bem complexo, assite a video aula do curso q tu vai pegar legal (aula 137).
+
+Baixando dependencias
+    show, fiz la meu cluster direitinho e peguei minha chave de acesso, troquei o password tudo certinho. Agora tem 2 dependencias q eu preciso baixar, o dotenv que vai fazer a segurança da minha senha para que eu n jogue ela no meu repositório e ela esteja exposta lá atoa. Comando:
+        npm install dotenv
+
+    A outra é mongoose que vai fazer a conecção da base de dados com o meu servidor. Comando:
+        npm install mongoose
+
+Depois de baixar as dependências tá na hora de configurar la no "server.js", já abre o arquivo e acompanha as anotações. 
+    Primeiro a gente cria uma variável pro mongoose que nem tá lá, só colocar 'require('mongoose')' lá dentro que tá show
+    Depois a gente cria uma variável para a connectionString, aquela url grandona que a gente teve que trocar o password lá
+    depois a gente chama o mongoose e usa o método connect e dentro do parâmetro a gente coloca a connectionString
+    depois desse método do connect a gente coloca um .then embaixo pra fazer uma função que vai ajeitar um problema de quando o usuário for tentar acessar o conteudo mesmo sem a base de dados conectada, então essa resolução vai fazer com que a base de dados primeiro seja conectada pra depois o usuário fazer qualquer requisão, pra isso a gente coloca dentro da função do .then um "app.emit('pronto')" isso vai fazer com que quando a base de dados estiver conectada ele vai liberar o programa pra jogar o site no ar e deixar o cliente fazer alguma requisão, a gente emitiu isso, agora a gente tem que colocar uma linha que capite essa emissão
+    Lá no final do "server.js" tem a linha que faz o nosso server seja acessável pela porta 3000
