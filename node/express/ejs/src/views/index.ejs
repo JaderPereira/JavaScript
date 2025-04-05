@@ -1,0 +1,14 @@
+<%- include('includes/head') %>
+<%# vai la na parta includes e no arquivo head que tu vai ver que eu copiei a parte do head, doctype essas coisas e joguei la, pq vai se repetir em todos os arquivos ejs mesmoe então pra performance do código é melhor colocar assim pra economizar recursos. %>
+<body>
+    <section>
+        <h1>Aprendendo como injetar conteudo dos controllers nos arquivos ejs</h1>
+        <% if (typeof saudacao !== 'undefined') { %>
+            <%- saudacao %> <br>
+            <%= saudacao %>
+        <% } %>
+    </section>
+    <script src="assets/js/bundle.js"></script>
+</body>
+
+</html>
