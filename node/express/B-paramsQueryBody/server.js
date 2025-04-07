@@ -41,7 +41,7 @@ Quando queremos adcionar um parâmetro novo a gente coloca:
         console.log(req.params)    
     })
 
-Os dois pontos indicam que o idUsuario é um parâmetro e dentro da nossa função a gente da console.log() em uma parada, que são os parâmetros que estão sendo enviados, agora vamos fazer isso na mão, abre o localhost e tudo mais e coloca na url o '/testes/qualquercoisa' isso fazer com que seja mostrado no console a seguinte parada: {"idUsuario":"qualquercoisa"}, exatamente, um json com as informações do parâmetro,o req.params serve pra isso, mostrar os parâmetros.
+Os dois pontos indicam que o idUsuario é um parâmetro e dentro da nossa função a gente da console.log() em uma parada, que são os parâmetros que estão sendo enviados, agora vamos fazer isso na mão, abre o localhost e tudo mais e coloca na url o '/testes/qualquercoisa' isso faz com que seja mostrado no console a seguinte parada: {"idUsuario":"qualquercoisa"}, exatamente, um json com as informações do parâmetro,o req.params serve pra isso, mostrar os parâmetros.
 
 Beleza aprendemos a mostrar os parâmetros e tudo mais mas temos um problema, quando tentamos abrir o /testes ele não consegue fazer esse get porque no get que fizemos acima nós fizemos ele pedindo o parâmetro, para deixar o parâmetro opcional a gente coloca uma interrogação depois dele o que indica que aquele parâmetro é opcional. dessa forma:
     app.get('/testes/:idUsuario?', (req, res) => {

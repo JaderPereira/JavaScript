@@ -1,4 +1,4 @@
-O nodemon é um pacote que a gente usa para rodar nosso servidor e sempre que fziermos alguma atualização ele atualizar automaticamente, primeiro a gente baixa ele, no terminal digite:
+O nodemon é um pacote que a gente usa para rodar nosso servidor e sempre que fizermos alguma atualização ele atualizar automaticamente, primeiro a gente baixa ele, no terminal digite:
     npm install nodemon --save-dev
 
 O nodemon é uma devdeppendencie por isso esse '--save-dev' para deixar as coisas organizadas, a gente so precisa dele na minha maquina e não é necessário para a execução do projeto, diferente do express. 

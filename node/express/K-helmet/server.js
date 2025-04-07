@@ -1,11 +1,11 @@
-require('dotenv').config()
+require('dotenv').config() //relacionado com o arquivo .env que vai proteger alguns dados que não podem ser expostos, como a string de conexão com o banco de dados
 
 const express = require('express')   //pegando o express q eu baixei
 const app = express()                //variavel q vai portar o express
 const mongoose = require('mongoose')
-mongoose.connect(process.env.CONNECTIONSTRING)
+mongoose.connect(process.env.CONNECTIONSTRING) //conectando com o banco de dados, a string de conexão ta no arquivo .env
     .then(() => {
-        console.log('conectei com a base de dados') //se tiver em duvida descomenta a linha
+        //console.log('conectei com a base de dados') //se tiver em duvida descomenta a linha
         app.emit('pronto')
     })
     .catch(e => console.log(e))
@@ -26,6 +26,7 @@ app.use(helmet()) //ajuda a proteger o app de algumas vulnerabilidades, como o x
 
 //configurando a pasta publica e o bodyparser
 app.use(express.urlencoded({ extended: true }))
+app.use(express.json())
 app.use(express.static(path.resolve(__dirname, 'public')))
 
 //configurando a sessão pra ser jogada lá na base de dados
@@ -50,8 +51,6 @@ app.use(csrf())
 //falando pro nosso servidor usar o views para renderizar um html
 app.set('views', path.resolve(__dirname, 'src', 'views'))
 app.set('view engine', 'ejs')
-
-
 
 app.use(globalMiddleware)
 app.use(checkCsrfError) //middleware que verifica se o csrf deu erro, se der erro ele renderiza a página 404
